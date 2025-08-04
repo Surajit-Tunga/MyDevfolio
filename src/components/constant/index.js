@@ -1,5 +1,5 @@
 export const aboutData = {
-  intro: `I am a passionate web developer with experience in building dynamic and responsive web applications. My journey in tech started with a curiosity for how things work, leading me to explore various programming languages and frameworks. I enjoy tackling challenges and continuously learning new skills to enhance my craft.`,
+  intro: `Currently pursuing a Bachelor's degree in Electronics and Communication Engineering from Guru Nanak Institute of Technology, Kolkata. I'm a MERN stack web developer with expertise in backend devlopment. I'm expanding my skillset in the Generative AI & ML. I have a strong foundation in Database Management Systems (DBMS) and Data Structures and Algorithms (DSA). I'm passionate about building innovative web applications and staying up-to-date with the latest technologies.`,
 
   education: [
     {
