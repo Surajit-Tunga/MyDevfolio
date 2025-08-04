@@ -72,16 +72,16 @@ const LeftDiv = () => {
 
         {/* Social Links */}
         <div className="flex justify-center gap-5 text-blue-400 text-xl pt-2">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/in/surajittunga" target="_blank" rel="noreferrer">
             <FaLinkedin className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="https://github.com/surajit-tunga" target="_blank" rel="noreferrer">
             <FaGithub className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://facebook.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="#" target="_blank" rel="noreferrer">
             <FaFacebook className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="#" target="_blank" rel="noreferrer">
             <FaInstagram className="hover:text-blue-500 transition" />
           </a>
         </div>
@@ -128,16 +128,16 @@ const LeftDiv = () => {
 
         {/* Right: Social Icons */}
         <div className="flex gap-4 text-blue-400 text-lg">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/in/surajittunga" target="_blank" rel="noreferrer">
             <FaLinkedin className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="https://github.com/surajit-tunga" target="_blank" rel="noreferrer">
             <FaGithub className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://facebook.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="#" target="_blank" rel="noreferrer">
             <FaFacebook className="hover:text-blue-500 transition" />
           </a>
-          <a href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer">
+          <a href="#" target="_blank" rel="noreferrer">
             <FaInstagram className="hover:text-blue-500 transition" />
           </a>
         </div>

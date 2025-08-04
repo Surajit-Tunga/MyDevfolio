@@ -44,7 +44,7 @@ export const aboutData = {
   extra: {
     title: "Chess",
     description: "I enjoy playing chess during my free time. It sharpens my strategic thinking.",
-    profile: "https://www.chess.com/member/your-username"
+    profile: "https://www.chess.com/member/Surajit_07"
   }
 };
 
