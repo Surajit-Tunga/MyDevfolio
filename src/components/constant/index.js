@@ -48,5 +48,24 @@ export const aboutData = {
   }
 };
 
+import dbms from '../../assets/dbms.jpg';
+import Django from '../../assets/Django.jpg';
 
 
+// constants/certificates.js
+export const certificates = [
+  {
+    image:  dbms ,
+    courseName: 'Introduction to Database Systems',
+    issuer: 'NPTEL',
+    url: 'https://internalapp.nptel.ac.in/NOC/NOC25/SEM1/Ecertificates/106/noc25-cs40/Course/NPTEL25CS40S64950366804325479.pdf',
+  },
+  {
+    image:  Django ,
+    courseName: 'Python with Django',
+    issuer: 'Ardent Computech Ltd.',
+    url: 'https://certificate.ardentsoftware.co.in/generate/147649',
+  },
+];
+
+ 
