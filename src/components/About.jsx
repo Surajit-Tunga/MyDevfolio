@@ -1,23 +1,66 @@
-import React from 'react'
+import React from 'react';
+import { aboutData } from './constant/index.js';
 
 const About = () => {
   return (
-    <div>
-      <h2>About Me</h2>
-      <p>
-        I am a passionate Full Stack Developer with a keen interest in building
-        dynamic and responsive web applications. My journey in tech began with
-        a fascination for problem-solving and a desire to create impactful
-        solutions.
+    <div className="text-gray-100 px-3 py-6 sm:px-10 sm:py-10 max-w-4xl mx-auto">
+      {/* About Me */}
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">About Me</h2>
+      <p className="mb-8 text-base sm:text-lg text-gray-300 leading-relaxed">
+        {aboutData.intro}
       </p>
-      <p>
-        I have experience working with a variety of technologies, including
-        React, Node.js, and MongoDB. I enjoy collaborating with cross-functional
-        teams to deliver high-quality products and continuously improve my
-        skills. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias illo ipsam unde quia possimus incidunt exercitationem quos rerum eaque amet et temporibus molestias quis dolorum, maiores eum expedita quas qui eligendi. Neque veniam dignissimos doloribus ab, laboriosam dolores minima! Quia provident fuga ducimus assumenda? Tempora aperiam dolorum vitae quidem sint minima nisi odio numquam eos rerum, rem ad officiis id obcaecati ducimus molestias doloremque qui ullam architecto assumenda minus cum velit recusandae vero! Reprehenderit voluptates amet veritatis facere, repellat, eos corporis enim sequi suscipit perferendis ut? Ad suscipit quos laudantium vel accusantium amet, tenetur assumenda aut sed, error ex ipsum doloremque nisi praesentium quaerat? Deleniti corporis sapiente beatae incidunt est dicta. Perspiciatis ipsam quibusdam eaque rerum odio? Nobis placeat cumque blanditiis magnam recusandae deleniti ad, nam est aspernatur assumenda illum cupiditate fuga atque veniam, aut libero eligendi consequuntur vel error illo odio nisi! Libero expedita laborum ullam voluptatum ducimus, tempore eos modi adipisci in iste nihil quam harum, aut dolorum pariatur, totam delectus! Dolorem adipisci facilis et optio ratione iusto. Non voluptates corporis quae omnis dignissimos laborum quis veritatis, nam velit enim, quia voluptatum maiores reiciendis quaerat ab temporibus ipsa reprehenderit tenetur repudiandae ipsam sapiente. Explicabo fugit nisi labore illo, repellat eveniet ad officia nesciunt. In eius, provident ea voluptas id non veniam explicabo error amet molestias soluta quis minima, rem atque fugit inventore et aperiam. Provident consectetur, suscipit mollitia enim, perspiciatis deserunt quod eaque, laborum saepe repellat repudiandae voluptatum repellendus corporis. Sequi numquam ullam eveniet tenetur commodi, provident quas ut fuga eius. Eum sunt blanditiis, quia quo laborum distinctio porro voluptate numquam officia aperiam provident quibusdam nulla reprehenderit tempore minus dicta, eaque, itaque repudiandae! In itaque totam aliquid. A debitis porro illo exercitationem, fugit voluptatem! Suscipit, aperiam? Quas eveniet iure consequuntur deleniti aliquam modi quo aperiam officiis veniam, necessitatibus distinctio voluptate vitae tempora corporis ab. Error odio rem culpa neque magni illo dolorem, eveniet adipisci animi placeat optio asperiores non est blanditiis rerum dolore deserunt dolores excepturi odit ab ad. Maiores rem corporis fugit numquam dignissimos magnam facilis consequatur optio nostrum ipsa ratione accusantium eveniet quidem, voluptate totam soluta quasi, ut expedita dolores iure veniam! Veniam sint in sapiente voluptates tempora eligendi impedit iusto! Ipsam eaque consequuntur veniam, necessitatibus quidem quam mollitia id dolorem ratione optio culpa et eveniet rerum non unde quae. Architecto sit atque numquam quasi sint earum provident, possimus officiis velit asperiores vitae obcaecati reiciendis libero aspernatur incidunt. Id odit eos adipisci soluta fugit quam amet a accusamus repellendus quae reprehenderit omnis tempore laborum voluptates maxime perspiciatis ea quas totam, vel harum animi accusantium unde quibusdam. Sint distinctio alias rem voluptatum porro. Iste cumque tempora quo error rem quidem laboriosam perspiciatis tenetur dolore consectetur nobis eaque, fugiat omnis iure facilis quae voluptas, impedit sunt? Porro at commodi accusamus molestiae nisi omnis qui rerum vero eveniet. Obcaecati nulla saepe corrupti non modi? Aspernatur, ipsa ratione enim dolorum placeat iure consequatur recusandae dolor expedita, debitis, accusantium ad veniam magni officia eius eaque tempore sapiente excepturi! Modi commodi debitis eum quos porro ab. Voluptatibus dignissimos cupiditate numquam distinctio pariatur temporibus accusantium! Tempora quaerat esse vero, pariatur est minima aspernatur ea voluptatum at, distinctio velit excepturi, qui repudiandae necessitatibus minus dicta itaque ipsam ipsum! Aspernatur fugiat expedita veniam molestias reprehenderit placeat deserunt incidunt dignissimos amet sunt. Nesciunt aperiam, sit quod veritatis fuga ut consequatur adipisci nisi dolore doloribus unde nobis doloremque molestias laboriosam maiores vero totam blanditiis, laborum ab quis temporibus earum! Quisquam, maxime. Facere fuga, consequatur consectetur voluptates fugiat eveniet, quod architecto libero minima quos explicabo cumque ad nulla laborum voluptate voluptatem itaque. Dolores doloremque consequuntur fuga corrupti molestias sequi sit adipisci. At veritatis explicabo dolorum laborum, temporibus corrupti cum consequatur saepe cupiditate, ducimus numquam laboriosam, beatae cumque accusantium libero neque officiis. Officia nisi doloremque et, veniam itaque ut, voluptas quibusdam ratione amet impedit ipsum, recusandae magni! Explicabo voluptas laboriosam consequuntur, repudiandae dolores corrupti cum fugit, velit, unde recusandae tenetur nobis nesciunt possimus? Ducimus rem rerum dolores eum mollitia. Mollitia cum obcaecati hic perspiciatis itaque porro, animi distinctio, doloribus, dolores quia quod minus tempora unde iusto. Nam veniam, nulla maxime molestiae dolor laudantium repudiandae consequuntur obcaecati blanditiis minima tempora consequatur iure autem, consectetur inventore sed fuga nobis quas. Laudantium aliquid esse eligendi voluptate accusantium minima quidem itaque minus harum? Facilis, accusantium consectetur voluptas earum nemo nostrum, cumque optio beatae assumenda error rerum quidem dicta libero. Sequi maiores doloribus, suscipit reprehenderit iusto adipisci vel ut exercitationem at velit. Minus deleniti voluptas ex, necessitatibus unde voluptatem fugiat! Cupiditate corporis perferendis ullam ratione! Unde doloribus excepturi asperiores labore blanditiis. Ducimus possimus delectus veritatis, iure error deserunt labore commodi enim quisquam placeat natus voluptate mollitia ad sequi ratione et doloribus quibusdam impedit, vel consectetur non molestiae qui distinctio perspiciatis! Modi corporis, eligendi necessitatibus ab beatae mollitia dicta pariatur architecto ut voluptatum deleniti voluptatem veritatis omnis perferendis, perspiciatis molestias porro? Ratione doloribus ducimus cumque, totam obcaecati voluptatibus dolorum eligendi veniam eum reprehenderit mollitia laborum nemo? Corrupti esse alias, sed, ullam rerum recusandae rem, molestias dignissimos sunt dolores debitis doloremque amet. Saepe repellat sed, tempore ab totam voluptate. Ipsam voluptatum quae ducimus facere, ratione, doloremque deserunt nam doloribus in, porro voluptatibus quos! Consequuntur iure rem aliquam assumenda molestias nam minima sapiente nostrum ipsa temporibus excepturi repellendus iste voluptate autem iusto nemo deleniti quis fuga, ut nihil ad sequi ratione itaque vel. Impedit neque commodi sunt enim explicabo nemo exercitationem hic quaerat voluptates quae. Fugiat qui enim labore maiores soluta fuga consequuntur amet quas porro, aperiam voluptatum? Eveniet recusandae dolores dignissimos libero odio suscipit est dolorem amet, quam ipsum consequuntur fugit eaque aliquam incidunt? Reiciendis consequatur delectus dolores cupiditate aspernatur rerum iure? Atque, dolores? Aspernatur enim quas nemo nulla tempore facilis provident cumque natus deserunt neque reiciendis quaerat voluptates laborum saepe numquam cum ab, itaque labore beatae quisquam a? Cupiditate saepe dolores ullam modi eius, at adipisci nihil fugiat nisi necessitatibus, amet voluptatum tempora qui perferendis sapiente ipsa distinctio. Nobis, temporibus reiciendis dolorum neque aspernatur ipsum voluptate, quae voluptatibus officia architecto dolore doloribus ut eligendi nam?
-      </p>
-    </div>
-  )
-}
 
-export default About
+      {/* Education */}
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Education</h2>
+      <div className="space-y-5 mb-10">
+        {aboutData.education.map((edu, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4"
+          >
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold">{edu.institution}</h3>
+              <p className="text-sm sm:text-base text-gray-400">{edu.degree}</p>
+              <p className="text-sm text-gray-400">Score: {edu.score}</p>
+            </div>
+            <span className="text-sm text-gray-300 sm:text-base mt-2 sm:mt-0">{edu.year}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Activities */}
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Things I Build & Explore</h2>
+      <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 mb-10">
+        {aboutData.activities.map((activity, index) => (
+          <div
+            key={index}
+            className="bg-gray-800 p-3 sm:p-4 rounded-xl shadow hover:shadow-lg transition"
+          >
+            <h3 className="text-base sm:text-lg font-semibold text-white">{activity.title}</h3>
+            <p className="text-sm sm:text-base text-gray-400 mt-1">{activity.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Hobbies */}
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Hobbies</h2>
+      <div className="bg-gray-800 p-3 sm:p-4 rounded-xl shadow">
+        <h3 className="text-base sm:text-lg font-semibold text-white">{aboutData.extra.title}</h3>
+        <p className="text-sm sm:text-base text-gray-400 mt-1">{aboutData.extra.description}</p>
+        {aboutData.extra.profile && (
+          <a
+            href={aboutData.extra.profile}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 text-sm sm:text-base mt-2 inline-block hover:text-blue-600 transition-colors duration-200"
+
+          >
+            Wanna Play?
+          </a>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default About;
