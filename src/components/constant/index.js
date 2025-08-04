@@ -5,19 +5,19 @@ export const aboutData = {
     {
       degree: "B.Tech in Electronics and Communication Engineering",
       institution: "Guru Nanak Institute of Technology",
-      year: "2027",
+      year: "2023-2027",
       score: "8.5 SGPA"
     },
     {
       degree: "Higher Secondary",
       institution: "Balichak BH Institution",
-      year: "2021",
+      year: "2020-2021",
       score: "76%"
     },
     {
       degree: "Secondary",
       institution: "Jamna Ramkrishna Vivekananda Pathamandir",
-      year: "2019",
+      year: "2018-2019",
       score: "84%"
     }
   ],
