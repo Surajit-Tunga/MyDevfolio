@@ -3,7 +3,7 @@ import { journeyData } from './constant/index';
 
 const Blog = () => {
   return (
-    <div className="px-4 sm:px-6 md:px-12 py-6 max-w-4xl mx-auto">
+    <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white">My Journey Blog</h2>
 
       <div className="space-y-10">

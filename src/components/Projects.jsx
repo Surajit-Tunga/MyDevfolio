@@ -6,7 +6,7 @@ const Projects = () => {
     <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">My Projects</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mt-4 px-2 sm:px-4 max-w-6xl mx-auto">
+      <div className="grid mt-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6  px-2 sm:px-4 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <div
             key={index}
