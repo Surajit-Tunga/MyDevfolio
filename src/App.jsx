@@ -19,10 +19,10 @@ const App = () => {
 
       {/* Small screens: stacked */}
       <div className="flex flex-col gap-4 lg:hidden h-[92vh]">
-        <div className="h-1/6">
+        <div className="h-[22%]">
           <LeftDiv />
         </div>
-        <div className="h-5/6 mt-2 mb-1">
+        <div className="h-[78%] mt-2">
           <RightDiv />
         </div>
       </div>
