@@ -1,18 +1,93 @@
-import React from 'react'
+import React from 'react';
+import {
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
+  FaPython, FaGitAlt, FaGithub, FaDocker, FaJava, FaRegCircle,
+} from 'react-icons/fa';
+import {
+  SiTailwindcss, SiMongodb, SiDjango, SiVite,
+  SiNumpy, SiPandas, SiScikitlearn, SiMysql,
+  SiExpress
+} from 'react-icons/si';
 
-const Skills = () => {
+const techStack = {
+  'Programming Languages': [
+    { icon: <FaPython />, name: 'Python' },
+    { icon: <FaJava />, name: 'Java' },
+    { icon: <FaJs />, name: 'JavaScript' },
+  ],
+  'Frontend': [
+    { icon: <FaHtml5 />, name: 'HTML' },
+    { icon: <FaCss3Alt />, name: 'CSS' },
+    { icon: <FaReact />, name: 'React' },
+    { icon: <SiTailwindcss />, name: 'Tailwind' },
+    { icon: <SiVite />, name: 'Vite' },
+  ],
+  'Backend': [
+    { icon: <FaNodeJs />, name: 'Node.js' },
+    { icon: <SiDjango />, name: 'Django' },
+    { icon: <SiExpress />, name: 'Express.js' },
+  ],
+  'Database': [
+    { icon: <SiMongodb />, name: 'MongoDB' },
+    { icon: <SiMysql />, name: 'MySQL' },
+  ],
+  'Gen AI': [
+    { name: 'LangChain' },
+    { name: 'LangGraph' },
+    { name: 'OpenAI' },
+    { name: 'Gemini' },
+    { name: 'Pinecone' },
+    { name: 'ChromaDB' },
+    { name: 'RAG' },
+  ],
+  'Data Science & ML': [
+    { icon: <SiNumpy />, name: 'NumPy' },
+    { icon: <SiPandas />, name: 'Pandas' },
+    { name: 'Matplotlib' },
+    { icon: <SiScikitlearn />, name: 'Scikit-Learn' },
+  ],
+  'DevOps & Tools': [
+    { icon: <FaGitAlt />, name: 'Git' },
+    { icon: <FaGithub />, name: 'GitHub' },
+    { icon: <FaDocker />, name: 'Docker' },
+  ]
+};
+
+const TechStack = () => {
   return (
-    <div>
-      <h2>My Skills</h2>
-      <ul>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Node.js</li>
-        <li>MongoDB</li>
-      </ul>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid est iure modi deleniti hic. Qui eos suscipit molestias mollitia sint ullam ab labore quis? Modi, accusamus recusandae! Voluptatum alias facilis animi quae, illo numquam cumque architecto aut sunt impedit commodi quas nemo velit ea assumenda iusto, possimus cupiditate vero. Eaque illum tempora labore, hic odit architecto quibusdam recusandae perferendis nostrum quae maiores explicabo nihil expedita rem similique animi laboriosam. Pariatur molestias odio voluptatibus, iusto adipisci harum quaerat perferendis cupiditate, distinctio, explicabo illo soluta optio quis rerum libero tempore amet fugit error quisquam non. Laudantium nesciunt ut inventore sunt velit, dolor nemo voluptatum laborum ipsum id recusandae veniam cupiditate nobis mollitia a deleniti reiciendis. Delectus voluptas nostrum quas alias ipsa, obcaecati veritatis similique minima veniam quasi enim blanditiis consequatur repudiandae? Eligendi sequi quidem eius dolores, recusandae animi magnam ea tempore placeat quos error totam voluptates fugit maiores id facere distinctio sapiente blanditiis. Velit excepturi ducimus quasi repudiandae, sit eveniet, perferendis cupiditate esse facere mollitia consequuntur facilis nesciunt, eligendi voluptates ad sunt. Quo odio fuga facere cupiditate ducimus pariatur ipsa dolores suscipit commodi illum excepturi nobis neque officiis, sequi cumque dignissimos maiores hic ipsum inventore? Corrupti consequuntur voluptatum debitis in magnam reiciendis sint earum molestiae laudantium similique, libero non repudiandae hic ratione, aspernatur modi quibusdam dolore nostrum eius quam, tempora possimus sequi! Molestiae cumque quae unde, maiores praesentium numquam nulla sit ducimus! Ex et accusantium ad impedit at ipsam. Obcaecati ratione similique sed distinctio odio excepturi unde, praesentium atque sit fugiat repellendus, animi consequatur velit consequuntur doloribus quae natus neque ipsum molestiae ipsam error, laboriosam dignissimos impedit. Necessitatibus debitis illum obcaecati repudiandae ipsa, maiores sunt, animi eius aperiam voluptatum officiis fugit, accusamus rerum. Non quas necessitatibus incidunt corporis quos molestiae facilis voluptatum laboriosam eveniet, eius dicta cumque officia in? Ut, eaque inventore? Optio magnam similique dolorem quibusdam aliquid alias inventore, sequi quae pariatur laudantium quaerat natus dolore rerum explicabo labore architecto! Porro deserunt tempora sint, laboriosam est facere consectetur aut voluptatem obcaecati ab facilis ea exercitationem consequatur suscipit quas impedit veniam nostrum? Sunt id accusantium voluptatum voluptates doloremque laboriosam similique labore quasi! Voluptatibus inventore est nulla quaerat atque ratione deleniti cum, asperiores voluptate fugiat commodi explicabo amet nesciunt placeat repellat, facere ipsam provident voluptatem, consectetur ipsa quidem eligendi nemo! Voluptates, inventore cum exercitationem magni, reprehenderit ipsa aspernatur perspiciatis iure corrupti facere nihil quis expedita deleniti? Laborum, eum. Voluptas dolor, illo fuga nihil ipsam quo adipisci quas aliquid nemo, magnam mollitia, quos officiis ratione ab aperiam ullam corporis architecto beatae ad! Hic velit suscipit ad commodi aspernatur ipsam fugit soluta est saepe, et temporibus modi. Repudiandae, tempore repellendus molestiae necessitatibus exercitationem voluptatibus libero! Asperiores cum adipisci blanditiis recusandae autem atque assumenda qui expedita, sint harum consequuntur deleniti doloremque architecto, modi aliquam esse nesciunt sequi molestiae eum. Fugit odit dolore laborum eaque quia porro assumenda iste deserunt vitae accusamus? Impedit pariatur obcaecati blanditiis vero perferendis recusandae, vitae sunt eum ad officia natus commodi molestiae sed maiores debitis rerum eligendi! Itaque beatae labore consequuntur nostrum exercitationem dolorem, id at voluptas corrupti fugit! Placeat ipsum earum molestiae sit modi molestias suscipit quis aut labore at, cupiditate sed iure fugiat architecto. Vero quas cumque aliquam nisi voluptatem alias obcaecati maiores non reiciendis. Ad porro totam consectetur laboriosam ducimus vitae nisi odit ut officia fugiat eius perferendis hic doloribus itaque inventore impedit ipsa est reiciendis neque, magni excepturi velit sit asperiores! Aperiam laudantium odio in a, molestiae accusamus ex maxime harum nulla sequi nostrum vero ratione ipsam excepturi officia ipsa natus esse omnis debitis facilis nemo molestias provident laboriosam officiis! Culpa magni saepe, ducimus placeat quas deserunt temporibus. Quo velit ut minus quos reiciendis sint voluptas consectetur in fugiat perspiciatis, magnam laborum natus, praesentium incidunt earum sapiente quidem accusamus. Dolorum doloremque quas magnam ullam molestias nemo, vitae fuga voluptates perspiciatis cupiditate! Voluptates nulla voluptate dolorem eveniet hic officia blanditiis? Repellendus quo atque, fuga hic quaerat velit cum, aperiam, maiores dignissimos vitae quam quos ipsum eaque ipsa quod. Maxime sequi nulla voluptatum recusandae cum deleniti assumenda neque architecto, exercitationem facere quo officia debitis rem alias, molestiae eius earum, excepturi sunt odio ullam necessitatibus! Dolores facere sit, inventore optio, corrupti temporibus vel ea amet modi porro esse. Placeat, suscipit dignissimos tempore laborum dolore, nihil ducimus nostrum inventore vitae quae iste distinctio officia optio facere voluptatum iure alias odio veritatis corrupti ex quod esse ea ullam. Excepturi placeat tempora animi tenetur nisi officiis quas sapiente eligendi nihil voluptatibus sit doloremque, a cum, quasi molestias aut consectetur quos accusamus laborum dolor enim ipsum! Qui, voluptatem harum animi modi vero ratione voluptatum in exercitationem nesciunt accusamus alias sit inventore ut esse debitis quod eligendi eveniet quasi ipsa maiores commodi officiis maxime! Itaque, provident. Nesciunt sunt dolorem incidunt, nulla error deserunt id ipsa maxime eum! Vitae possimus et praesentium assumenda, pariatur tenetur vero deleniti, officia, maiores suscipit corporis eligendi dignissimos repellat deserunt nihil. Id sit aut repellat accusantium magnam dolorum nesciunt similique, repudiandae voluptatibus possimus sint blanditiis? Soluta ducimus, nemo saepe necessitatibus perspiciatis laborum pariatur. Hic natus quod voluptatibus! Deserunt ipsam nulla ipsum molestias praesentium alias perferendis facere unde quisquam? Eligendi voluptates odit doloremque nulla nemo distinctio ipsa a. Expedita, cum enim debitis non fugit reiciendis ex ducimus sint officiis quasi sed numquam nam consequuntur doloremque temporibus, iste ullam. Vel sequi numquam modi, distinctio error labore quia quidem facere, incidunt, placeat itaque alias deserunt cumque dolores voluptatem tempore ut sapiente laboriosam quibusdam. Architecto nihil consequatur quibusdam perspiciatis, dolores tempora quas eos. Deserunt consectetur vero optio ratione. Perferendis architecto fugit suscipit excepturi illo temporibus provident iure qui! Harum voluptatum, ea consequatur, hic veritatis tempore libero non incidunt cupiditate consequuntur voluptate porro ut dolor reiciendis, praesentium animi quisquam illo consectetur facere quod numquam est deleniti! Sit molestiae quaerat neque nihil quae. At, quia fuga consequuntur velit ducimus officiis doloremque totam ullam vitae earum sapiente eos recusandae quasi nemo voluptatem facere veniam nulla possimus blanditiis cum. Corrupti impedit debitis repellendus velit officiis quisquam repudiandae molestiae. Iusto ratione, similique distinctio accusamus laborum at sed et provident eius sequi.
-    </div>
-  )
-}
+    <section className="mx-3 my-1">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white text-left">
+        Technologies Explored by Me
+      </h2>
 
-export default Skills
+      <div className="grid gap-8 lg:grid-cols-2">
+        {Object.entries(techStack).map(([category, tools]) => (
+          <div key={category}>
+            <h3 className="text-lg font-semibold text-blue-600 mb-3">{category}</h3>
+            <div className="flex flex-wrap gap-3">
+              {tools.map((tool, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 bg-gray-800 text-sm px-3 py-1.5 rounded-lg shadow hover:scale-105 transition-transform"
+                >
+                  <span className="text-blue-300 text-base">
+                    {tool.icon ? tool.icon : <FaRegCircle />}
+                  </span>
+                  <span className="text-gray-200">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-white text-left">
+          Certificates
+        </h2>
+
+      </div>
+    </section>
+  );
+};
+
+export default TechStack;

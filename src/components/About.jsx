@@ -3,7 +3,7 @@ import { aboutData } from './constant/index.js';
 
 const About = () => {
   return (
-    <div className="text-gray-100 px-3 py-6 sm:px-10 sm:py-10 max-w-4xl mx-auto">
+    <div className="mx-3 my-1" >
       {/* About Me */}
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">About Me</h2>
       <p className="mb-8 text-base sm:text-lg text-gray-300 leading-relaxed">
