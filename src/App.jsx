@@ -4,9 +4,9 @@ import RightDiv from './components/RightDiv';
 
 const App = () => {
   return (
-    <div className="h-screen bg-black px-6 py-4 overflow-hidden">
+    <div className="h-screen bg-black px-6 py-4">
       {/* Large screens: side-by-side */}
-      <div className="hidden lg:flex items-center justify-center h-full">
+      <div className="hidden overflow-hidden lg:flex items-center justify-center h-full">
         <div className="flex gap-6 w-10/12 max-w-[1440px] h-[90vh]">
           <div className="w-1/5 h-full">
             <LeftDiv />
@@ -22,7 +22,7 @@ const App = () => {
         <div className="h-[22%]">
           <LeftDiv />
         </div>
-        <div className="h-[78%] mt-2">
+        <div className="h-[78%] mt-1">
           <RightDiv />
         </div>
       </div>
