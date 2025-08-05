@@ -7,7 +7,7 @@ const Activities = ({ onDone }) => {
 
   // Convert each activity to a formatted string with title and description
   const intro = activitiesData
-    .map((item) => `• ${item.title}\n  ${item.description}\n`)
+    .map((item) => `~$ ${item.title}\n  ${item.description}\n`)
     .join('\n');
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const Activities = ({ onDone }) => {
   return (
     <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-400">Activities</h2>
+      
       <p className="text-base text-white sm:text-lg leading-relaxed whitespace-pre-wrap">
         {text}
       </p>

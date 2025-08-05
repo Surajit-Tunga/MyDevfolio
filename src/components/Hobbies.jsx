@@ -1,88 +1,48 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { projects } from './constant/index';
+import React, { useEffect, useState } from 'react';
+import { aboutData } from './constant/index.js';
 
-const Projects = ({ onDone }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [currentTypedText, setCurrentTypedText] = useState('');
-  const [displayedProjects, setDisplayedProjects] = useState([]);
-  const scrollRef = useRef(null);
-
-  const formatProject = (project) => {
-    return `${project.name}\n${project.description}\n\nExplore →\n`;
-  };
+const Hobbies = ({ onDone }) => {
+  const fullText = `${aboutData.extra.title}: ${aboutData.extra.description}`;
+  const [typedText, setTypedText] = useState('');
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (currentIndex < projects.length) {
-      const currentProject = projects[currentIndex];
-      const fullText = formatProject(currentProject);
+    if (index < fullText.length) {
+      const timeout = setTimeout(() => {
+        setTypedText((prev) => prev + fullText.charAt(index));
+        setIndex(index + 1);
+      }, 30); // Typing speed
 
-      if (charIndex < fullText.length) {
-        const timeout = setTimeout(() => {
-          setCurrentTypedText((prev) => prev + fullText[charIndex]);
-          setCharIndex((prev) => prev + 1);
-        }, 20); // typing speed
-        return () => clearTimeout(timeout);
-      } else {
-        setDisplayedProjects((prev) => [
-          ...prev,
-          {
-            ...currentProject,
-            typedText: currentTypedText,
-          },
-        ]);
-        setCurrentTypedText('');
-        setCharIndex(0);
-        setCurrentIndex((prev) => prev + 1);
-      }
+      return () => clearTimeout(timeout);
     } else {
-      if (onDone) onDone();
+      onDone?.(); // Optional callback when done
     }
-  }, [charIndex, currentIndex, currentTypedText, onDone]);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [currentTypedText]);
+  }, [index, fullText, onDone]);
 
   return (
-    <div className="mx-3 my-1" ref={scrollRef}>
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Projects</h2>
+    <div className="mx-3 my-1">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-400">Hobbies</h2>
 
-      <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
-        {displayedProjects.map((project, index) => (
-          <div key={index}>
-            <p className="text-white">{project.typedText.replace('Explore →', '').trim()}</p>
+      <p className="text-base text-white sm:text-lg leading-relaxed whitespace-pre-wrap font-mono">
+        <span  className="text-green-600">~$ </span>
+        <span>{typedText}</span>
+        {index < fullText.length && <span className="animate-pulse">|</span>}
+      </p>
 
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-600 transition-colors duration-200 inline-block mt-1"
-            >
-              🔗 Explore
-            </a>
-
-            <div className="flex gap-2 mt-2">
-              {project.techStack.map((icon, i) => (
-                <img
-                  key={i}
-                  src={icon}
-                  alt="tech"
-                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
-                />
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {currentTypedText && (
-          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
-        )}
-      </div>
+      {index >= fullText.length && aboutData.extra.profile && (
+        <div className="mt-2">
+          <a
+            href={aboutData.extra.profile}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-600 transition-colors duration-200 underline"
+          >
+            Wanna Play?
+          </a>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Projects;
+export default Hobbies;

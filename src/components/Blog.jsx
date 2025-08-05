@@ -71,7 +71,7 @@ const Blog = ({ onDone }) => {
         {displayedEvents.map((event, index) => (
           <div key={index}>
             <h3 className="text-yellow-200 font-bold text-base sm:text-lg">
-              {event.typedTitle}
+              <span  className="text-green-600">~$ </span>{event.typedTitle}
             </h3>
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {event.typedText}
@@ -83,7 +83,7 @@ const Blog = ({ onDone }) => {
         {currentEventIndex < journeyData.length && (
           <div>
             <h3 className="text-yellow-100 font-bold text-base sm:text-lg">
-              {currentTypedTitle}
+             <span  className="text-green-600">~$ </span> {currentTypedTitle}
             </h3>
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {currentTypedText}
