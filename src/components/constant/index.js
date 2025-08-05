@@ -37,14 +37,14 @@ export const activitiesData = [
     title: "Full Stack Web Development",
     description: "Creating end-to-end web apps using MERN stack and modern frontend tools.",
   },
-  {
-    title: "GenAI-Powered Tools",
-    description: "Building intelligent asynchronous tools using Langchain, Gemini, and RAG.",
-  },
-  {
-    title: "Machine Learning",
-    description: "Experimenting with data-driven models for image classification and forecasting.",
-  },
+  // {
+  //   title: "GenAI-Powered Tools",
+  //   description: "Building intelligent asynchronous tools using Langchain, Gemini, and RAG.",
+  // },
+  // {
+  //   title: "Machine Learning",
+  //   description: "Experimenting with data-driven models for image classification and forecasting.",
+  // },
   {
     title: "Tech Project Leadership",
     description: "Leading collaborative tech projects with focus on design, performance, and deployment.",

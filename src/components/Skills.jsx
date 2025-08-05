@@ -17,18 +17,18 @@ const techStack = [
     category: 'Database',
     technologies: ['MongoDB', 'MySQL'],
   },
+  // {
+  //   category: 'Data Science',
+  //   technologies: ['NumPy', 'Pandas', 'Matplotlib', 'Scikit-learn'],
+  // },
   {
-    category: 'Data Science',
-    technologies: ['NumPy', 'Pandas', 'Matplotlib', 'Scikit-learn'],
+    category: 'Tools',
+    technologies: ['Git', 'GitHub'],
   },
-  {
-    category: 'DevOps & Tools',
-    technologies: ['Git', 'GitHub', 'Docker'],
-  },
-  {
-    category: 'AI & LLM',
-    technologies: ['LangChain', 'LlamaIndex', 'Vector DB', 'RAG'],
-  },
+  // {
+  //   category: 'AI & LLM',
+  //   technologies: ['LangChain', 'LlamaIndex', 'Vector DB', 'RAG'],
+  // },
 ];
 
 const TechStack = ({ onDone }) => {
