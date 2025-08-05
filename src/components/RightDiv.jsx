@@ -27,6 +27,7 @@ const RightDiv = () => {
     },
   ]);
   const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false); // NEW
   const terminalRef = useRef(null);
 
   const handleCommand = (e) => {
@@ -51,28 +52,36 @@ const RightDiv = () => {
           '  - clear';
         break;
       case 'about':
-        component = <About />;
+        setIsTyping(true);
+        component = <About onDone={() => setIsTyping(false)} />;
         break;
       case 'education':
-        component = <Education />;
+        setIsTyping(true);
+        component = <Education onDone={() => setIsTyping(false)} />;
         break;
       case 'activities':
-        component = <Activities />;
+        setIsTyping(true);
+        component = <Activities onDone={() => setIsTyping(false)} />;
         break;
       case 'hobbies':
-        component = <Hobbies />;
+        setIsTyping(true);
+        component = <Hobbies onDone={() => setIsTyping(false)} />;
         break;
       case 'certificate':
-        component = <Certificate />;
+        setIsTyping(true);
+        component = <Certificate onDone={() => setIsTyping(false)} />;
         break;
       case 'skills':
-        component = <Skills />;
+        setIsTyping(true);
+        component = <Skills onDone={() => setIsTyping(false)} />;
         break;
       case 'projects':
-        component = <Projects />;
+        setIsTyping(true);
+        component = <Projects onDone={() => setIsTyping(false)} />;
         break;
       case 'blog':
-        component = <Blog />;
+        setIsTyping(true);
+        component = <Blog onDone={() => setIsTyping(false)} />;
         break;
       case 'clear':
         setHistory([]);
@@ -107,17 +116,19 @@ const RightDiv = () => {
           </div>
         ))}
 
-        {/* Input Prompt */}
-        <form onSubmit={handleCommand} className="flex items-center space-x-2">
-          <span className="text-green-500">visitor@portfolio</span>:~$
-          <input
-            type="text"
-            className="bg-transparent border-none outline-none flex-1 text-green-200"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            autoFocus
-          />
-        </form>
+        {/* Input Prompt - only when not typing */}
+        {!isTyping && (
+          <form onSubmit={handleCommand} className="flex items-center space-x-2">
+            <span className="text-green-500">visitor@portfolio</span>:~$
+            <input
+              type="text"
+              className="bg-transparent border-none outline-none flex-1 text-green-200"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              autoFocus
+            />
+          </form>
+        )}
       </div>
     </div>
   );

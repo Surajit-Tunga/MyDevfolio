@@ -3,7 +3,7 @@ import { aboutData } from './constant/index.js';
 
 const Hobbies = () => {
   return (
-    <div>
+    <div className="mx-3 my-1">
         {/* Hobbies */}
             <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Hobbies</h2>
             <div className="bg-gray-800 p-3 sm:p-4 rounded-xl shadow">

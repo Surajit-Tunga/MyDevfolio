@@ -3,8 +3,8 @@ import { certificates } from './constant/index';
 
 const Certificate = () => {
   return (
-    <div>
-            <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-white text-left">
+    <div className="mx-3 my-1">
+      <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-white text-left">
         Certificates
       </h2>
 
