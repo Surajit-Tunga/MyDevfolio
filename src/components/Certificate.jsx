@@ -1,56 +1,82 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import { certificates } from './constant/index';
 
-const Certificate = () => {
+const Certificate = ({ onDone }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [currentTypedText, setCurrentTypedText] = useState('');
+  const [displayedCertificates, setDisplayedCertificates] = useState([]);
+  const scrollRef = useRef(null);
+
+  const formatCertificate = (cert) => {
+    return `${cert.courseName} (${cert.issuer})\n`;
+  };
+
+  useEffect(() => {
+    if (currentIndex < certificates.length) {
+      const currentCert = certificates[currentIndex];
+      const fullText = formatCertificate(currentCert);
+
+      if (charIndex < fullText.length) {
+        const timeout = setTimeout(() => {
+          setCurrentTypedText((prev) => prev + fullText[charIndex]);
+          setCharIndex(charIndex + 1);
+        }, 20);
+        return () => clearTimeout(timeout);
+      } else {
+        setDisplayedCertificates((prev) => [
+          ...prev,
+          {
+            ...currentCert,
+            typedText: currentTypedText,
+          },
+        ]);
+        setCurrentTypedText('');
+        setCharIndex(0);
+        setCurrentIndex(currentIndex + 1);
+      }
+    } else {
+      if (onDone) onDone();
+    }
+  }, [charIndex, currentIndex, currentTypedText, onDone]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [currentTypedText]);
+
   return (
-    <div className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-white text-left">
+    <div ref={scrollRef} className="mx-3 my-1">
+      <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-yellow-400 text-left">
         Certificates
       </h2>
 
-      <div className="scroll-hidden overflow-x-auto whitespace-nowrap px-1 py-2">
-      <div className="flex gap-3 sm:gap-4">
-      {certificates.map((cert, idx) => {
-      const CardContent = (
-        <>
-          <img
-            src={cert.image}
-            alt={cert.courseName}
-            className="w-full h-32 sm:h-40 object-cover rounded-t-2xl"
-          />
-          <div className="p-3 sm:p-4">
-            <h4 className="text-blue-600 font-semibold text-sm sm:text-md truncate">
-              {cert.courseName}
-            </h4>
-            <p className="text-xs sm:text-sm text-gray-400 truncate">{cert.issuer}</p>
+      <div className="text-white text-sm sm:text-base leading-relaxed space-y-2">
+        {displayedCertificates.map((cert, idx) => (
+          <div key={idx}>
+            {cert.url ? (
+              <a
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline text-white"
+              >
+                {cert.typedText}
+              </a>
+            ) : (
+              <p>{cert.typedText}</p>
+            )}
           </div>
-        </>
-      );
+        ))}
 
-      return (
-        <div
-          key={idx}
-          className="bg-gray-800 rounded-2xl shadow-md overflow-hidden w-[220px] sm:w-[260px] flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]"
-        >
-          {cert.url ? (
-            <a
-              href={cert.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full h-full"
-            >
-              {CardContent}
-            </a>
-          ) : (
-            CardContent
-          )}
-        </div>
-      );
-    })}
-  </div>
+        {/* Current certificate typing */}
+        {currentIndex < certificates.length && (
+          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Certificate
+export default Certificate;

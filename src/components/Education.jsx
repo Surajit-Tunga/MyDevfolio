@@ -1,28 +1,80 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { aboutData } from './constant/index.js';
+import { FaCheckCircle } from 'react-icons/fa';
 
-const Education = () => {
+const Education = ({ onDone }) => {
+  const [animatedData, setAnimatedData] = useState(
+    aboutData.education.map(() => ({
+      institution: '',
+      degree: '',
+      score: '',
+      year: ''
+    }))
+  );
+  const [currentFieldIndex, setCurrentFieldIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  const fields = ['institution', 'degree', 'score', 'year'];
+
+  useEffect(() => {
+    const totalFields = aboutData.education.length * fields.length;
+
+    if (currentFieldIndex >= totalFields) {
+      if (onDone) onDone();
+      return;
+    }
+
+    const entryIndex = Math.floor(currentFieldIndex / fields.length);
+    const fieldName = fields[currentFieldIndex % fields.length];
+    const fullText = aboutData.education[entryIndex][fieldName];
+
+    if (charIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setAnimatedData((prev) => {
+          const updated = [...prev];
+          updated[entryIndex] = {
+            ...updated[entryIndex],
+            [fieldName]: updated[entryIndex][fieldName] + fullText[charIndex]
+          };
+          return updated;
+        });
+        setCharIndex(charIndex + 1);
+      }, 30);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setCharIndex(0);
+      setCurrentFieldIndex((prev) => prev + 1);
+    }
+  }, [charIndex, currentFieldIndex, onDone]);
+
   return (
     <div className="mx-3 my-1">
-        {/* Education */}
-            <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Education</h2>
-            <div className="space-y-5 mb-10">
-              {aboutData.education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4"
-                >
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold">{edu.institution}</h3>
-                    <p className="text-sm sm:text-base text-gray-400">{edu.degree}</p>
-                    <p className="text-sm text-gray-400">Score: {edu.score}</p>
-                  </div>
-                  <span className="text-sm text-gray-300 sm:text-base mt-2 sm:mt-0">{edu.year}</span>
-                </div>
-              ))}
-            </div>
-    </div>
-  )
-}
+      <h2 className="text-xl sm:text-2xl font-bold text-yellow-400 mb-4">
+        Education
+      </h2>
 
-export default Education
+      <div className="space-y-5 mb-10">
+        {animatedData.map((edu, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4"
+          >
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-yellow-400 flex items-center gap-2">
+                {edu.institution}
+              </h3>
+              <p className="text-sm sm:text-base text-yellow-200">{edu.degree}</p>
+              <p className="text-sm text-white"> {edu.score}</p>
+            </div>
+            <span className="text-sm text-white sm:text-base mt-2 sm:mt-0">
+              {edu.year}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Education;

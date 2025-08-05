@@ -1,33 +1,35 @@
 export const aboutData = {
   intro: `Currently pursuing a Bachelor's degree in Electronics and Communication Engineering from Guru Nanak Institute of Technology, Kolkata. I'm a MERN stack web developer with expertise in backend devlopment. I'm expanding my skillset in the Generative AI & ML. I have a strong foundation in Database Management Systems (DBMS) and Data Structures and Algorithms (DSA). I'm passionate about building innovative web applications and staying up-to-date with the latest technologies.`,
-
-  education: [
-    {
-      degree: "B.Tech in Electronics and Communication Engineering",
-      institution: "Guru Nanak Institute of Technology",
-      year: "2023-2027",
-      score: "8.5 SGPA"
-    },
-    {
-      degree: "Higher Secondary",
-      institution: "Balichak BH Institution",
-      year: "2020-2021",
-      score: "76%"
-    },
-    {
-      degree: "Secondary",
-      institution: "Jamna Ramkrishna Vivekananda Pathamandir",
-      year: "2018-2019",
-      score: "84%"
-    }
-  ],
-
   
   extra: {
     title: "Chess",
     description: "I enjoy playing chess during my free time. It sharpens my strategic thinking.",
     profile: "https://www.chess.com/member/Surajit_07"
-  }
+  },
+
+  education: [
+    {
+      institution: "Guru Nanak Institute of Technology",
+      degree: "B.Tech in ECE",
+      score: "8.5 SGPA",
+      year: "2023 - 2027",
+      done: false
+    },
+    {
+      institution: "Balichak BH Institution",
+      degree: "Higher Secondary",
+      score: "76%",
+      year: "2022-2023",
+      done: true
+    },
+    {
+      institution: "Jamna Ramkrishna Vivekananda Pathmandir",
+      degree: "Secondary",
+      score: "84%",
+      year: "2020-2021",
+      done: true
+    }
+  ],
 };
 
 export const activitiesData = [
@@ -51,20 +53,17 @@ export const activitiesData = [
 
 
 
-import dbms from '../../assets/dbms.jpg';
-import Django from '../../assets/Django.jpg';
+
 
 
 // constants/certificates.js
 export const certificates = [
   {
-    image:  dbms ,
     courseName: 'Introduction to Database Systems',
     issuer: 'NPTEL',
     url: 'https://internalapp.nptel.ac.in/NOC/NOC25/SEM1/Ecertificates/106/noc25-cs40/Course/NPTEL25CS40S64950366804325479.pdf',
   },
   {
-    image:  Django ,
     courseName: 'Python with Django',
     issuer: 'Ardent Computech Ltd.',
     url: 'https://certificate.ardentsoftware.co.in/generate/147649',
@@ -132,3 +131,5 @@ export const journeyData = [
     description: "Developed a speaking system for mute people using hand gestures.",
   },
 ];
+
+
