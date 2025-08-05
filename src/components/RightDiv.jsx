@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import About from './About';
+import Education from './Education';
+import Activities from './Activities';
+import Hobbies from './Hobbies';
 import Skills from './Skills';
+import Certificate from './Certificate';
 import Projects from './Projects';
 import Blog from './Blog';
 
@@ -9,7 +13,16 @@ const RightDiv = () => {
     {
       command: 'help',
       output:
-        'Available commands:\n  - about\n  - skills\n  - projects\n  - blog\n  - clear',
+        'Available commands:\n' +
+        '  - about\n' +
+        '  - education\n' +
+        '  - activities\n' +
+        '  - hobbies\n' +
+        '  - certificate\n' +
+        '  - skills\n' +
+        '  - projects\n' +
+        '  - blog\n' +
+        '  - clear',
       component: null,
     },
   ]);
@@ -26,10 +39,31 @@ const RightDiv = () => {
     switch (command) {
       case 'help':
         output =
-          'Available commands:\n  - about\n  - skills\n  - projects\n  - blog\n  - clear';
+          'Available commands:\n' +
+          '  - about\n' +
+          '  - education\n' +
+          '  - activities\n' +
+          '  - hobbies\n' +
+          '  - certificate\n' +
+          '  - skills\n' +
+          '  - projects\n' +
+          '  - blog\n' +
+          '  - clear';
         break;
       case 'about':
         component = <About />;
+        break;
+      case 'education':
+        component = <Education />;
+        break;
+      case 'activities':
+        component = <Activities />;
+        break;
+      case 'hobbies':
+        component = <Hobbies />;
+        break;
+      case 'certificate':
+        component = <Certificate />;
         break;
       case 'skills':
         component = <Skills />;
@@ -63,22 +97,17 @@ const RightDiv = () => {
       <div ref={terminalRef} className="space-y-4">
         {history.map((item, idx) => (
           <div key={idx}>
-            {/* Command Prompt Line */}
             <div>
               <span className="text-green-500">visitor@portfolio</span>:~$ {item.command}
             </div>
-
-            {/* Output Text (help or error) */}
             {item.output && (
               <pre className="ml-4 whitespace-pre-wrap">{item.output}</pre>
             )}
-
-            {/* Output Component (About, Skills, etc.) */}
             {item.component && <div className="mt-2">{item.component}</div>}
           </div>
         ))}
 
-        {/* Next Input Prompt */}
+        {/* Input Prompt */}
         <form onSubmit={handleCommand} className="flex items-center space-x-2">
           <span className="text-green-500">visitor@portfolio</span>:~$
           <input
