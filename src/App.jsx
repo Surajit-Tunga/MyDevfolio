@@ -22,7 +22,7 @@ const App = () => {
         <div className="h-[20%]">
           <LeftDiv />
         </div>
-        <div className="h-[80%] mt-1">
+        <div className="h-[80%] mt-1 mb-1">
           <RightDiv />
         </div>
       </div>
