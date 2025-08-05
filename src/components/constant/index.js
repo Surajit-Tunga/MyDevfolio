@@ -106,18 +106,6 @@ export const projects = [
   }
 ];
 
-import SBH1 from "../../assets/SBH1.jpg";
-import SBH2 from "../../assets/SBH2.jpg";
-import SBH3 from "../../assets/SBH3.jpg";
-import SBH4 from "../../assets/SBH4.jpg";
-
-import FOSET1 from "../../assets/FOSET1.jpg";
-import FOSET2 from "../../assets/FOSET2.jpg";
-
-import IHMMC1 from "../../assets/IHMMC1.jpg";
-import IHMMC2 from "../../assets/IHMMC2.jpg";
-import IHMMC3 from "../../assets/IHMMC3.jpg";
-
 export const journeyData = [
   {
     eventName: "Smart Bengal Hackathon 2025",
@@ -126,7 +114,6 @@ export const journeyData = [
     position: "Finalist",
     role: "Team Lead & Full Stack Developer",
     description: "Made an image processing project for phone detection in restricted zones.",
-    images: [SBH1, SBH2, SBH3, SBH4],
   },
   {
     eventName: "Technical Paper Presentation",
@@ -135,7 +122,6 @@ export const journeyData = [
     position: "Paper Presenter",
     role: "Team Lead",
     description: "Presented a paper on '5g-Enabled IoT'.",
-    images: [FOSET1, FOSET2],
   },
   {
     eventName: "IHMMC 2025",
@@ -144,6 +130,5 @@ export const journeyData = [
     position: "Winner (10th Place)",
     role: "Team Lead & Model Maker",
     description: "Developed a speaking system for mute people using hand gestures.",
-    images: [IHMMC1, IHMMC2, IHMMC3],
   },
 ];
