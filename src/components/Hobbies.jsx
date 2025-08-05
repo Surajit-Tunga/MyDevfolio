@@ -1,28 +1,88 @@
-import React from 'react'
-import { aboutData } from './constant/index.js';
+import React, { useEffect, useState, useRef } from 'react';
+import { projects } from './constant/index';
 
-const Hobbies = () => {
+const Projects = ({ onDone }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [currentTypedText, setCurrentTypedText] = useState('');
+  const [displayedProjects, setDisplayedProjects] = useState([]);
+  const scrollRef = useRef(null);
+
+  const formatProject = (project) => {
+    return `${project.name}\n${project.description}\n\nExplore →\n`;
+  };
+
+  useEffect(() => {
+    if (currentIndex < projects.length) {
+      const currentProject = projects[currentIndex];
+      const fullText = formatProject(currentProject);
+
+      if (charIndex < fullText.length) {
+        const timeout = setTimeout(() => {
+          setCurrentTypedText((prev) => prev + fullText[charIndex]);
+          setCharIndex((prev) => prev + 1);
+        }, 20); // typing speed
+        return () => clearTimeout(timeout);
+      } else {
+        setDisplayedProjects((prev) => [
+          ...prev,
+          {
+            ...currentProject,
+            typedText: currentTypedText,
+          },
+        ]);
+        setCurrentTypedText('');
+        setCharIndex(0);
+        setCurrentIndex((prev) => prev + 1);
+      }
+    } else {
+      if (onDone) onDone();
+    }
+  }, [charIndex, currentIndex, currentTypedText, onDone]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [currentTypedText]);
+
   return (
-    <div className="mx-3 my-1">
-        {/* Hobbies */}
-            <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Hobbies</h2>
-            <div className="bg-gray-800 p-3 sm:p-4 rounded-xl shadow">
-              <h3 className="text-base sm:text-lg font-semibold text-white">{aboutData.extra.title}</h3>
-              <p className="text-sm sm:text-base text-gray-400 mt-1">{aboutData.extra.description}</p>
-              {aboutData.extra.profile && (
-                <a
-                  href={aboutData.extra.profile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 text-sm sm:text-base mt-2 inline-block hover:text-blue-600 transition-colors duration-200"
-      
-                >
-                  Wanna Play?
-                </a>
-              )}
-            </div>
-    </div>
-  )
-}
+    <div className="mx-3 my-1" ref={scrollRef}>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Projects</h2>
 
-export default Hobbies
+      <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
+        {displayedProjects.map((project, index) => (
+          <div key={index}>
+            <p className="text-white">{project.typedText.replace('Explore →', '').trim()}</p>
+
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-600 transition-colors duration-200 inline-block mt-1"
+            >
+              🔗 Explore
+            </a>
+
+            <div className="flex gap-2 mt-2">
+              {project.techStack.map((icon, i) => (
+                <img
+                  key={i}
+                  src={icon}
+                  alt="tech"
+                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {currentTypedText && (
+          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Projects;

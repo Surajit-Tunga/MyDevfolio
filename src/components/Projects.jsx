@@ -1,56 +1,85 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { projects } from './constant/index';
 
-const Projects = () => {
+const Projects = ({ onDone }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [currentTypedText, setCurrentTypedText] = useState('');
+  const [displayedProjects, setDisplayedProjects] = useState([]);
+  const scrollRef = useRef(null);
+
+  const formatProject = (project) => {
+    return `${project.name}\n${project.description}\n\nExplore →\n`;
+  };
+
+  useEffect(() => {
+    if (currentIndex < projects.length) {
+      const currentProject = projects[currentIndex];
+      const fullText = formatProject(currentProject);
+
+      if (charIndex < fullText.length) {
+        const timeout = setTimeout(() => {
+          setCurrentTypedText((prev) => prev + fullText[charIndex]);
+          setCharIndex((prev) => prev + 1);
+        }, 20); // typing speed
+        return () => clearTimeout(timeout);
+      } else {
+        setDisplayedProjects((prev) => [
+          ...prev,
+          {
+            ...currentProject,
+            typedText: currentTypedText,
+          },
+        ]);
+        setCurrentTypedText('');
+        setCharIndex(0);
+        setCurrentIndex((prev) => prev + 1);
+      }
+    } else {
+      if (onDone) onDone();
+    }
+  }, [charIndex, currentIndex, currentTypedText, onDone]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [currentTypedText]);
+
   return (
-    <div className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">My Projects</h2>
+    <div className="mx-3 my-1" ref={scrollRef}>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Projects</h2>
 
-      <div className="grid mt-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6  px-2 sm:px-4 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 rounded-xl overflow-hidden
-              shadow-[3px_3px_6px_rgba(96,165,250,0.15)]
-              hover:shadow-[3px_3px_12px_rgba(96,165,250,0.3)]
-              transition-transform duration-300 hover:scale-[1.03]
-              p-3 sm:p-4 flex flex-col justify-between"
-          >
-            {/* Project Title and Description */}
-            <div>
-              <h3 className="text-base sm:text-lg text-blue-500 font-bold mb-1 sm:mb-2">
-                {project.name}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4 leading-snug">
-                {project.description}
-              </p>
-            </div>
+      <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
+        {displayedProjects.map((project, index) => (
+          <div key={index}>
+            <p className="text-white">{project.typedText.replace('Explore →', '').trim()}</p>
 
-            {/* Bottom Row: Explore Button + Tech Stack */}
-            <div className="flex justify-between items-end mt-auto pt-2">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs px-3 py-1 rounded-full border border-blue-500 text-blue-400
-                  hover:bg-blue-500 hover:text-white transition-all duration-300"
-              >
-                🔗 Explore
-              </a>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-600 transition-colors duration-200 inline-block mt-1"
+            >
+              🔗 Explore
+            </a>
 
-              <div className="flex gap-2 sm:gap-3">
-                {project.techStack.map((icon, i) => (
-                  <img
-                    key={i}
-                    src={icon}
-                    alt="tech"
-                    className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
-                  />
-                ))}
-              </div>
+            <div className="flex gap-2 mt-2">
+              {project.techStack.map((icon, i) => (
+                <img
+                  key={i}
+                  src={icon}
+                  alt="tech"
+                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
+                />
+              ))}
             </div>
           </div>
         ))}
+
+        {currentTypedText && (
+          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
+        )}
       </div>
     </div>
   );

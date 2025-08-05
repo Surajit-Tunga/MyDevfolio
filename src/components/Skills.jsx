@@ -1,86 +1,106 @@
-import React from 'react';
-import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
-  FaPython, FaGitAlt, FaGithub, FaDocker, FaJava, FaRegCircle,
-} from 'react-icons/fa';
-import {
-  SiTailwindcss, SiMongodb, SiDjango, SiVite,
-  SiNumpy, SiPandas, SiScikitlearn, SiMysql,
-  SiExpress
-} from 'react-icons/si';
+import React, { useEffect, useState } from 'react';
 
-const techStack = {
-  'Programming Languages': [
-    { icon: <FaPython />, name: 'Python' },
-    { icon: <FaJava />, name: 'Java' },
-    { icon: <FaJs />, name: 'JavaScript' },
-  ],
-  'Frontend': [
-    { icon: <FaHtml5 />, name: 'HTML' },
-    { icon: <FaCss3Alt />, name: 'CSS' },
-    { icon: <FaReact />, name: 'React' },
-    { icon: <SiTailwindcss />, name: 'Tailwind' },
-    { icon: <SiVite />, name: 'Vite' },
-  ],
-  'Backend': [
-    { icon: <FaNodeJs />, name: 'Node.js' },
-    { icon: <SiDjango />, name: 'Django' },
-    { icon: <SiExpress />, name: 'Express.js' },
-  ],
-  'Database': [
-    { icon: <SiMongodb />, name: 'MongoDB' },
-    { icon: <SiMysql />, name: 'MySQL' },
-  ],
-  'Gen AI': [
-    { name: 'LangChain' },
-    { name: 'LangGraph' },
-    { name: 'OpenAI' },
-    { name: 'Gemini' },
-    { name: 'Pinecone' },
-    { name: 'ChromaDB' },
-    { name: 'RAG' },
-  ],
-  'Data Science & ML': [
-    { icon: <SiNumpy />, name: 'NumPy' },
-    { icon: <SiPandas />, name: 'Pandas' },
-    { name: 'Matplotlib' },
-    { icon: <SiScikitlearn />, name: 'Scikit-Learn' },
-  ],
-  'DevOps & Tools': [
-    { icon: <FaGitAlt />, name: 'Git' },
-    { icon: <FaGithub />, name: 'GitHub' },
-    { icon: <FaDocker />, name: 'Docker' },
-  ]
-};
+const techStack = [
+  {
+    category: 'Programming Languages',
+    technologies: ['Python', 'Java', 'JavaScript'],
+  },
+  {
+    category: 'Frontend',
+    technologies: ['HTML', 'CSS', 'React', 'Tailwind', 'Vite'],
+  },
+  {
+    category: 'Backend',
+    technologies: ['Node.js', 'Express.js', 'Django'],
+  },
+  {
+    category: 'Database',
+    technologies: ['MongoDB', 'MySQL'],
+  },
+  {
+    category: 'Data Science',
+    technologies: ['NumPy', 'Pandas', 'Matplotlib', 'Scikit-learn'],
+  },
+  {
+    category: 'DevOps & Tools',
+    technologies: ['Git', 'GitHub', 'Docker'],
+  },
+  {
+    category: 'AI & LLM',
+    technologies: ['LangChain', 'LlamaIndex', 'Vector DB', 'RAG'],
+  },
+];
 
-const TechStack = () => {
+const TechStack = ({ onDone }) => {
+  const [displayedCategories, setDisplayedCategories] = useState([]);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [typedCategory, setTypedCategory] = useState('');
+  const [visibleTechs, setVisibleTechs] = useState([]);
+  const [techIndex, setTechIndex] = useState(0);
+
+  const currentCategory = techStack[currentCategoryIndex];
+
+  useEffect(() => {
+    if (currentCategoryIndex >= techStack.length) {
+      onDone && onDone();
+      return;
+    }
+
+    if (charIndex < currentCategory.category.length) {
+      const timeout = setTimeout(() => {
+        setTypedCategory((prev) => prev + currentCategory.category[charIndex]);
+        setCharIndex(charIndex + 1);
+      }, 50);
+      return () => clearTimeout(timeout);
+    } else if (techIndex < currentCategory.technologies.length) {
+      const timeout = setTimeout(() => {
+        setVisibleTechs((prev) => [...prev, currentCategory.technologies[techIndex]]);
+        setTechIndex(techIndex + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    } else {
+      const timeout = setTimeout(() => {
+        setDisplayedCategories((prev) => [
+          ...prev,
+          { title: currentCategory.category, items: visibleTechs },
+        ]);
+        setCurrentCategoryIndex(currentCategoryIndex + 1);
+        setCharIndex(0);
+        setTypedCategory('');
+        setVisibleTechs([]);
+        setTechIndex(0);
+      }, 800);
+      return () => clearTimeout(timeout);
+    }
+  }, [charIndex, techIndex, currentCategoryIndex]);
+
   return (
-    <section className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white text-left">
-        Technologies Explored by Me
-      </h2>
+    <div className="text-white font-mono text-lg space-y-4 p-4">
+      {/* Already typed categories */}
+      {displayedCategories.map((cat, idx) => (
+        <div key={idx}>
+          <div className="text-yellow-400 font-semibold mb-1">{cat.title}</div>
+          <ul className="ml-4 list-disc">
+            {cat.items.map((tech, i) => (
+              <li key={i}>{tech}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        {Object.entries(techStack).map(([category, tools]) => (
-          <div key={category}>
-            <h3 className="text-lg font-semibold text-blue-600 mb-3">{category}</h3>
-            <div className="flex flex-wrap gap-3">
-              {tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 bg-gray-800 text-sm px-3 py-1.5 rounded-lg shadow hover:scale-105 transition-transform"
-                >
-                  <span className="text-blue-300 text-base">
-                    {tool.icon ? tool.icon : <FaRegCircle />}
-                  </span>
-                  <span className="text-gray-200">{tool.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+      {/* Currently typing category */}
+      {currentCategoryIndex < techStack.length && (
+        <div>
+          <div className="text-yellow-200 font-semibold mb-1">{typedCategory}</div>
+          <ul className="ml-4 list-disc">
+            {visibleTechs.map((tech, i) => (
+              <li key={i}>{tech}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 };
 
