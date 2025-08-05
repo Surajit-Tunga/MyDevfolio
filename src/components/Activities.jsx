@@ -1,24 +1,35 @@
-import React from 'react'
-import { aboutData } from './constant/index.js';
+import React, { useEffect, useState } from 'react';
+import { activitiesData } from './constant/index.js';
 
-const Activities = () => {
+const Activities = ({ onDone }) => {
+  const [text, setText] = useState('');
+  const [index, setIndex] = useState(0);
+
+  // Convert each activity to a formatted string with title and description
+  const intro = activitiesData
+    .map((item) => `• ${item.title}\n  ${item.description}\n`)
+    .join('\n');
+
+  useEffect(() => {
+    if (index < intro.length) {
+      const timeout = setTimeout(() => {
+        setText((prev) => prev + intro[index]);
+        setIndex(index + 1);
+      }, 20);
+      return () => clearTimeout(timeout);
+    } else {
+      if (onDone) onDone(); // Notify parent when done
+    }
+  }, [index, intro, onDone]);
+
   return (
     <div className="mx-3 my-1">
-        {/* Activities */}
-            <h2 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">Things I Build & Explore</h2>
-            <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 mb-10">
-              {aboutData.activities.map((activity, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800 p-3 sm:p-4 rounded-xl shadow hover:shadow-lg transition"
-                >
-                  <h3 className="text-base sm:text-lg font-semibold text-white">{activity.title}</h3>
-                  <p className="text-sm sm:text-base text-gray-400 mt-1">{activity.description}</p>
-                </div>
-              ))}
-            </div>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-400">Activities</h2>
+      <p className="text-base text-white sm:text-lg leading-relaxed whitespace-pre-wrap">
+        {text}
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default Activities
+export default Activities;

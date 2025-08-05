@@ -20,7 +20,7 @@ const About = ({ onDone }) => {
 
   return (
     <div className="mx-3 my-1 ">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-green-500">About Me</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-400">About Me</h2>
       <p className="text-base text-white sm:text-lg leading-relaxed whitespace-pre-wrap">{text}</p>
     </div>
   );
