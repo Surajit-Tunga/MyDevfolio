@@ -102,7 +102,7 @@ const RightDiv = () => {
   }, [history]);
 
   return (
-    <div className="bg-black text-green-400 font-mono p-4 rounded-xl h-full overflow-y-auto border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
+    <div className="bg-black text-green-400 font-mono p-4 sm:p-1 rounded-xl h-full overflow-y-auto border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
       <div ref={terminalRef} className="space-y-4">
         {history.map((item, idx) => (
           <div key={idx}>
