@@ -1,53 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
 import Blog from './Blog';
 
 const RightDiv = () => {
-  const [activeTab, setActiveTab] = useState('About');
+  const [history, setHistory] = useState([
+    {
+      command: 'help',
+      output:
+        'Available commands:\n  - about\n  - skills\n  - projects\n  - blog\n  - clear',
+      component: null,
+    },
+  ]);
+  const [input, setInput] = useState('');
+  const terminalRef = useRef(null);
 
-  const renderSection = () => {
-    switch (activeTab) {
-      case 'About':
-        return <About />;
-      case 'Skills':
-        return <Skills />;
-      case 'Projects':
-        return <Projects />;
-      case 'Blog':
-        return <Blog />;
+  const handleCommand = (e) => {
+    e.preventDefault();
+    const command = input.trim().toLowerCase();
+
+    let output = null;
+    let component = null;
+
+    switch (command) {
+      case 'help':
+        output =
+          'Available commands:\n  - about\n  - skills\n  - projects\n  - blog\n  - clear';
+        break;
+      case 'about':
+        component = <About />;
+        break;
+      case 'skills':
+        component = <Skills />;
+        break;
+      case 'projects':
+        component = <Projects />;
+        break;
+      case 'blog':
+        component = <Blog />;
+        break;
+      case 'clear':
+        setHistory([]);
+        setInput('');
+        return;
       default:
-        return null;
+        output = `'${command}' is not recognized. Type 'help' to see available commands.`;
     }
+
+    setHistory([...history, { command, output, component }]);
+    setInput('');
   };
 
-  return (
-    <div className="relative bg-gray-900 text-gray-100 border-2 border-blue-900 rounded-xl p-4 h-full overflow-y-auto shadow-[0_0_10px_#1e3a8a] scroll-hidden">
-      {/* Sticky Nav */}
-      <div className="sticky top-0 z-10 mb-6">
-        <div className="flex justify-center lg:justify-end">
-          <div className="flex gap-2 backdrop-blur-md bg-white/10 px-3 py-1 rounded-md shadow-md">
-            {['About', 'Skills', 'Projects', 'Blog'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`text-xs px-2 py-1 rounded-md font-medium transition-all duration-200
-                  ${
-                    activeTab === tab
-                      ? 'bg-blue-600 text-white shadow'
-                      : 'text-blue-300 hover:bg-blue-700 hover:text-white'
-                  }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [history]);
 
-      {/* Main Content */}
-      <div>{renderSection()}</div>
+  return (
+    <div className="bg-black text-green-400 font-mono p-4 rounded-xl h-full overflow-y-auto border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
+      <div ref={terminalRef} className="space-y-4">
+        {history.map((item, idx) => (
+          <div key={idx}>
+            {/* Command Prompt Line */}
+            <div>
+              <span className="text-green-500">visitor@portfolio</span>:~$ {item.command}
+            </div>
+
+            {/* Output Text (help or error) */}
+            {item.output && (
+              <pre className="ml-4 whitespace-pre-wrap">{item.output}</pre>
+            )}
+
+            {/* Output Component (About, Skills, etc.) */}
+            {item.component && <div className="mt-2">{item.component}</div>}
+          </div>
+        ))}
+
+        {/* Next Input Prompt */}
+        <form onSubmit={handleCommand} className="flex items-center space-x-2">
+          <span className="text-green-500">visitor@portfolio</span>:~$
+          <input
+            type="text"
+            className="bg-transparent border-none outline-none flex-1 text-green-200"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            autoFocus
+          />
+        </form>
+      </div>
     </div>
   );
 };
