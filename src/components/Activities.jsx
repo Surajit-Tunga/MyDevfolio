@@ -70,7 +70,7 @@ const Activities = ({ onDone }) => {
           </p>
         )}
 
-        <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
+        <span ref={endRef} className="inline-block w-px h-px align-top pb-8" />
       </div>
     </div>
   );
