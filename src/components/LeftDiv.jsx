@@ -5,7 +5,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaEnvelope,
-  FaPhone,
+  FaWhatsapp,
 } from 'react-icons/fa';
 import pp from '../assets/pp.jpg';
 
@@ -71,19 +71,20 @@ const LeftDiv = () => {
               surajittunga2005@gmail.com
             </a>
           </div>
-
           <div>
-            <div className="flex items-center gap-2 text-yellow-800">
-              <FaPhone />
-              <span className="text-yellow-800">Phone</span>
-            </div>
-            <a
-              href="tel:+918972195682"
-              className="text-green-400 hover:text-green-300 ml-6 block mt-1"
+             <div className="flex items-center gap-2 text-yellow-800">
+                 <FaWhatsapp />
+                 <span className="text-yellow-800">WhatsApp</span>
+             </div>
+             <a
+               href="https://wa.me/918972195682"
+               target="_blank"
+               rel="noreferrer"
+               className="text-green-400 hover:text-green-300 ml-6 block mt-1"
             >
-              +91 8972195682
+               +91 8972195682
             </a>
-          </div>
+         </div>
           <hr className="border-green-700" />
         </div>
 
@@ -136,9 +137,9 @@ const LeftDiv = () => {
           <a href="mailto:surajittunga2005@gmail.com" title="Email">
             <FaEnvelope className="hover:text-green-300 transition" />
           </a>
-          <a href="tel:+918972195682" title="Call">
-            <FaPhone className="hover:text-green-300 transition" />
-          </a>
+          <a href="https://wa.me/918972195682" target="_blank" rel="noreferrer" title="WhatsApp">
+             <FaWhatsapp className="hover:text-green-300 transition" />
+         </a>
         </div>
 
         <div className="flex gap-4 text-green-400 text-lg">
