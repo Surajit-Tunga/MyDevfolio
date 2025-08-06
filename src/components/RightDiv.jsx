@@ -102,32 +102,32 @@ const RightDiv = () => {
   }, [history]);
 
   return (
-    <div className="bg-black text-green-400 font-mono p-4 sm:p-2 rounded-xl h-full overflow-y-auto overflow-x-hidden border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
-      <div ref={terminalRef} className="space-y-4">
+    <div className="bg-black text-green-400 font-mono p-4 sm:p-2 rounded-xl h-full overflow-y-auto overflow-x-hidden border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden w-full">
+      <div ref={terminalRef} className="space-y-4 break-words max-w-full">
         {history.map((item, idx) => (
-          <div key={idx}>
-            <div>
+          <div key={idx} className="w-full break-words">
+            <div className="w-full break-words">
               <span className="text-green-500">visitor@portfolio</span>:~$ {item.command}
             </div>
             {item.output && (
               <pre
-                className={`ml-4 whitespace-pre-wrap ${
+                className={`ml-4 whitespace-pre-wrap break-words ${
                   item.output.startsWith("'") ? 'text-red-500' : ''
                 }`}
               >
                 {item.output}
               </pre>
             )}
-            {item.component && <div className="mt-2">{item.component}</div>}
+            {item.component && <div className="mt-2 w-full break-words">{item.component}</div>}
           </div>
         ))}
 
         {!isTyping && (
-          <form onSubmit={handleCommand} className="flex items-center space-x-2">
+          <form onSubmit={handleCommand} className="flex items-center space-x-2 w-full">
             <span className="text-green-500">visitor@portfolio</span>:~$
             <input
               type="text"
-              className="bg-transparent border-none outline-none flex-1 text-green-200"
+              className="bg-transparent border-none outline-none flex-1 text-green-200 w-full"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               autoFocus
