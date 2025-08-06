@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { techStack } from '../constant/index';
 
 const TechStack = ({ onDone }) => {
@@ -9,6 +9,7 @@ const TechStack = ({ onDone }) => {
   const [visibleTechs, setVisibleTechs] = useState([]);
   const [techIndex, setTechIndex] = useState(0);
 
+  const endRef = useRef(null);
   const currentCategory = techStack[currentCategoryIndex];
 
   useEffect(() => {
@@ -45,12 +46,20 @@ const TechStack = ({ onDone }) => {
     }
   }, [charIndex, techIndex, currentCategoryIndex]);
 
+  useEffect(() => {
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [typedCategory, visibleTechs]);
+
   return (
     <div className="text-white font-mono text-lg space-y-4 p-4">
       {/* Already typed categories */}
       {displayedCategories.map((cat, idx) => (
         <div key={idx}>
-          <div className="text-yellow-400 font-semibold mb-1">  <span  className="text-green-600">~$ </span>{cat.title}</div>
+          <div className="text-yellow-400 font-semibold mb-1">
+            <span className="text-green-600">~$ </span>{cat.title}
+          </div>
           <ul className="ml-4 list-disc">
             {cat.items.map((tech, i) => (
               <li key={i}>{tech}</li>
@@ -62,7 +71,9 @@ const TechStack = ({ onDone }) => {
       {/* Currently typing category */}
       {currentCategoryIndex < techStack.length && (
         <div>
-          <div className="text-yellow-200 font-semibold mb-1"><span className="text-green-600">~$ </span>{typedCategory}</div>
+          <div className="text-yellow-200 font-semibold mb-1">
+            <span className="text-green-600">~$ </span>{typedCategory}
+          </div>
           <ul className="ml-4 list-disc">
             {visibleTechs.map((tech, i) => (
               <li key={i}>{tech}</li>
@@ -70,6 +81,9 @@ const TechStack = ({ onDone }) => {
           </ul>
         </div>
       )}
+
+      {/* Auto-scroll target */}
+      <div ref={endRef} className="w-px h-px inline-block" />
     </div>
   );
 };

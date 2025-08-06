@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { projects } from '../constant/index';
 
 const Projects = ({ onDone }) => {
@@ -6,7 +6,7 @@ const Projects = ({ onDone }) => {
   const [charIndex, setCharIndex] = useState(0);
   const [currentTypedText, setCurrentTypedText] = useState('');
   const [displayedProjects, setDisplayedProjects] = useState([]);
-  const scrollRef = useRef(null);
+  const endRef = useRef(null); // For smooth scroll
 
   const formatProject = (project) => {
     return `${project.name}\n${project.description}\n\nExplore →\n`;
@@ -21,7 +21,7 @@ const Projects = ({ onDone }) => {
         const timeout = setTimeout(() => {
           setCurrentTypedText((prev) => prev + fullText[charIndex]);
           setCharIndex((prev) => prev + 1);
-        }, 20); // typing speed
+        }, 20);
         return () => clearTimeout(timeout);
       } else {
         setDisplayedProjects((prev) => [
@@ -41,13 +41,13 @@ const Projects = ({ onDone }) => {
   }, [charIndex, currentIndex, currentTypedText, onDone]);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [currentTypedText]);
 
   return (
-    <div className="mx-3 my-1" ref={scrollRef}>
+    <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Projects</h2>
 
       <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
@@ -80,6 +80,9 @@ const Projects = ({ onDone }) => {
         {currentTypedText && (
           <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
         )}
+
+        {/* Auto-scroll anchor */}
+        <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
       </div>
     </div>
   );

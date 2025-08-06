@@ -7,9 +7,9 @@ const Blog = ({ onDone }) => {
   const [currentTypedTitle, setCurrentTypedTitle] = useState('');
   const [currentTypedText, setCurrentTypedText] = useState('');
   const [displayedEvents, setDisplayedEvents] = useState([]);
-  const scrollRef = useRef(null);
 
-  // Formats only the body (excluding title)
+  const endRef = useRef(null);
+
   const formatBody = (event) => {
     return (
       `On ${event.date}, I attended ${event.eventName} organized by ${event.organizedBy}.\n` +
@@ -28,16 +28,15 @@ const Blog = ({ onDone }) => {
       if (currentTypedTitle.length < fullTitle.length) {
         const timeout = setTimeout(() => {
           setCurrentTypedTitle((prev) => prev + fullTitle[currentTypedTitle.length]);
-        }, 50); // Slower title typing
+        }, 50);
         return () => clearTimeout(timeout);
       } else if (charIndex < fullBody.length) {
         const timeout = setTimeout(() => {
           setCurrentTypedText((prev) => prev + fullBody[charIndex]);
           setCharIndex(charIndex + 1);
-        }, 15); // Faster body typing
+        }, 15);
         return () => clearTimeout(timeout);
       } else {
-        // Typing complete, add full event to displayed list
         const completedEvent = {
           ...currentEvent,
           typedTitle: currentTypedTitle,
@@ -45,7 +44,6 @@ const Blog = ({ onDone }) => {
         };
         setDisplayedEvents((prev) => [...prev, completedEvent]);
 
-        // Reset for next event
         setCurrentTypedTitle('');
         setCurrentTypedText('');
         setCharIndex(0);
@@ -57,21 +55,20 @@ const Blog = ({ onDone }) => {
   }, [charIndex, currentEventIndex, currentTypedTitle, currentTypedText, onDone]);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [currentTypedTitle, currentTypedText]);
 
   return (
-    <div ref={scrollRef} className="mx-3 my-1">
+    <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Journey Blog</h2>
 
       <div className="mt-4 space-y-6">
-        {/* Display completed events */}
         {displayedEvents.map((event, index) => (
           <div key={index}>
             <h3 className="text-yellow-200 font-bold text-base sm:text-lg">
-              <span  className="text-green-600">~$ </span>{event.typedTitle}
+              <span className="text-green-600">~$ </span>{event.typedTitle}
             </h3>
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {event.typedText}
@@ -79,17 +76,19 @@ const Blog = ({ onDone }) => {
           </div>
         ))}
 
-        {/* Currently typing event */}
         {currentEventIndex < journeyData.length && (
           <div>
             <h3 className="text-yellow-100 font-bold text-base sm:text-lg">
-             <span  className="text-green-600">~$ </span> {currentTypedTitle}
+              <span className="text-green-600">~$ </span>{currentTypedTitle}
             </h3>
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {currentTypedText}
             </pre>
           </div>
         )}
+
+        {/* Auto-scroll target */}
+        <div ref={endRef} className="w-px h-px inline-block" />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { aboutData } from '../constant/index.js';
 
 const Education = ({ onDone }) => {
@@ -12,6 +12,7 @@ const Education = ({ onDone }) => {
   );
   const [currentFieldIndex, setCurrentFieldIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const endRef = useRef(null); // For auto-scroll
 
   const fields = ['institution', 'degree', 'score', 'year'];
 
@@ -37,7 +38,7 @@ const Education = ({ onDone }) => {
           };
           return updated;
         });
-        setCharIndex(charIndex + 1);
+        setCharIndex((prev) => prev + 1);
       }, 30);
 
       return () => clearTimeout(timeout);
@@ -46,6 +47,13 @@ const Education = ({ onDone }) => {
       setCurrentFieldIndex((prev) => prev + 1);
     }
   }, [charIndex, currentFieldIndex, onDone]);
+
+  // Scroll into view when content updates
+  useEffect(() => {
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [animatedData]);
 
   return (
     <div className="mx-3 my-1">
@@ -64,13 +72,15 @@ const Education = ({ onDone }) => {
                 {edu.institution}
               </h3>
               <p className="text-sm sm:text-base text-yellow-200">{edu.degree}</p>
-              <p className="text-sm text-white"> {edu.score}</p>
+              <p className="text-sm text-white">{edu.score}</p>
             </div>
             <span className="text-sm text-white sm:text-base mt-2 sm:mt-0">
               {edu.year}
             </span>
           </div>
         ))}
+        {/* Auto-scroll anchor */}
+        <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
       </div>
     </div>
   );
