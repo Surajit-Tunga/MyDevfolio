@@ -72,7 +72,11 @@ const TechStack = ({ onDone }) => {
       {currentCategoryIndex < techStack.length && (
         <div>
           <div className="text-yellow-200 font-semibold mb-1">
-            <span className="text-green-600">~$ </span>{typedCategory}
+            <span className="text-green-600">~$ </span>
+            {typedCategory}
+            {charIndex < currentCategory.category.length && (
+              <span className="animate-pulse">|</span>
+            )}
           </div>
           <ul className="ml-4 list-disc">
             {visibleTechs.map((tech, i) => (

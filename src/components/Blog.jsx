@@ -79,15 +79,22 @@ const Blog = ({ onDone }) => {
         {currentEventIndex < journeyData.length && (
           <div>
             <h3 className="text-yellow-100 font-bold text-base sm:text-lg">
-              <span className="text-green-600">~$ </span>{currentTypedTitle}
+              <span className="text-green-600">~$ </span>
+              {currentTypedTitle}
+              {currentTypedTitle.length < journeyData[currentEventIndex].eventName.length && (
+                <span className="animate-pulse">|</span>
+              )}
             </h3>
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {currentTypedText}
+              {currentTypedTitle.length === journeyData[currentEventIndex].eventName.length &&
+                charIndex < formatBody(journeyData[currentEventIndex]).length && (
+                  <span className="animate-pulse">|</span>
+              )}
             </pre>
           </div>
         )}
 
-        {/* Auto-scroll target */}
         <div ref={endRef} className="w-px h-px inline-block" />
       </div>
     </div>

@@ -53,7 +53,10 @@ const Projects = ({ onDone }) => {
       <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
         {displayedProjects.map((project, index) => (
           <div key={index}>
-            <p className="text-white"><span className="text-green-600">~$ </span>{project.typedText.replace('Explore →', '').trim()}</p>
+            <p className="text-white">
+              <span className="text-green-600">~$ </span>
+              {project.typedText.replace('Explore →', '').trim()}
+            </p>
 
             <a
               href={project.link}
@@ -78,7 +81,11 @@ const Projects = ({ onDone }) => {
         ))}
 
         {currentTypedText && (
-          <div className="whitespace-pre-wrap text-white"><span className="text-green-600">~$ </span>{currentTypedText}</div>
+          <div className="whitespace-pre-wrap text-white">
+            <span className="text-green-600">~$ </span>
+            {currentTypedText}
+            <span className="animate-pulse">|</span>
+          </div>
         )}
 
         {/* Auto-scroll anchor */}

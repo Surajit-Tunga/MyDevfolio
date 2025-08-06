@@ -27,11 +27,12 @@ const About = ({ onDone, scrollRef }) => {
   }, [text]);
 
   return (
-    <div className="mx-3 my-5 ">
+    <div className="mx-3 my-5">
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-400">About Me</h2>
       <p className="text-base pb-5 text-white sm:text-lg leading-relaxed whitespace-pre-wrap">
         <span className="text-green-600">~$ </span>
         {text}
+        {index < intro.length && <span className="animate-pulse">|</span>}
         <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
       </p>
     </div>

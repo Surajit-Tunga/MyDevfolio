@@ -2,17 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { activitiesData } from '../constant/index.js';
 
 const Activities = ({ onDone }) => {
-  const [typedLines, setTypedLines] = useState([]); // Store completed lines
+  const [typedLines, setTypedLines] = useState([]);
   const [currentLine, setCurrentLine] = useState('');
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const endRef = useRef(null);
 
-  // Prepare all lines (each title + description becomes two lines)
   const allLines = activitiesData.flatMap((item) => [
     { text: item.title, type: 'title' },
     { text: item.description, type: 'desc' },
-    { text: '', type: 'blank' }, // blank line for spacing
+    { text: '', type: 'blank' },
   ]);
 
   useEffect(() => {
@@ -64,10 +63,11 @@ const Activities = ({ onDone }) => {
         })}
 
         {currentLine && (
-         <p className={allLines[lineIndex]?.type === 'title' ? 'text-yellow-200 font-semibold' : 'text-white  pl-2'}>
-           {allLines[lineIndex]?.type === 'title' && <span className="text-green-600">~$ </span>}
-           {currentLine}
-        </p>
+          <p className={allLines[lineIndex]?.type === 'title' ? 'text-yellow-200 font-semibold' : 'text-white pl-2'}>
+            {allLines[lineIndex]?.type === 'title' && <span className="text-green-600">~$ </span>}
+            {currentLine}
+            <span className="animate-pulse">|</span>
+          </p>
         )}
 
         <span ref={endRef} className="inline-block w-px h-px align-top pb-8" />

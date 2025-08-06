@@ -63,7 +63,7 @@ const Hobbies = ({ onDone }) => {
         >
           {playText}
           {index >= fullText.length && playIndex < playTextFull.length && (
-            <span className="animate-pulse">|</span>
+            <span className="animate-pulse"> |</span>
           )}
         </a>
       </div>
