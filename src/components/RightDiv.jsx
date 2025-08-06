@@ -107,7 +107,7 @@ const RightDiv = () => {
         {history.map((item, idx) => (
           <div key={idx} className="w-full break-words">
             <div className="w-full break-words">
-              <span className="text-green-500">visitor@portfolio</span>:~$ {item.command}
+              <span className="text-green-500">visitor@Devfolio</span>:~$ {item.command}
             </div>
             {item.output && (
               <pre
@@ -124,7 +124,7 @@ const RightDiv = () => {
 
         {!isTyping && (
           <form onSubmit={handleCommand} className="flex items-center space-x-2 w-full">
-            <span className="text-green-500">visitor@portfolio</span>:~$
+            <span className="text-green-500">visitor@Devfolio</span>:~$
             <input
               type="text"
               className="bg-transparent border-none outline-none flex-1 text-green-200 w-full"

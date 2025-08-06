@@ -45,7 +45,7 @@ const LeftDiv = () => {
           Surajit Tunga
         </h1>
         <p className="text-sm text-yellow-400 text-center h-5 whitespace-nowrap">
-          {displayedText}
+          <span className="text-green-600">~$ </span>{displayedText}
           <span className="animate-pulse">|</span>
         </p>
         <a
@@ -94,10 +94,10 @@ const LeftDiv = () => {
           <a href="https://github.com/surajit-tunga" target="_blank" rel="noreferrer">
             <FaGithub className="hover:text-green-300 transition" />
           </a>
-          <a href="#" target="_blank" rel="noreferrer">
+          <a href="https://www.facebook.com/profile.php?id=100092186147999" target="_blank" rel="noreferrer">
             <FaFacebook className="hover:text-green-300 transition" />
           </a>
-          <a href="#" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/surajit.tunga/profilecard/?igsh=MnpqdzhsN3QzazR0" target="_blank" rel="noreferrer">
             <FaInstagram className="hover:text-green-300 transition" />
           </a>
         </div>
@@ -114,7 +114,7 @@ const LeftDiv = () => {
           <div>
             <h1 className="text-base font-semibold text-white">Surajit Tunga</h1>
             <p className="text-xs text-yellow-400 h-4 whitespace-nowrap">
-              {displayedText}
+              <span className="text-green-600">~$ </span>{displayedText}
               <span className="animate-pulse">|</span>
             </p>
           </div>
@@ -123,7 +123,7 @@ const LeftDiv = () => {
           href="/Surajit_Tunga_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs bg-green-600 text-white px-1 py-1 rounded-md hover:bg-green-700 transition"
+          className="text-xs mb-auto bg-green-600 text-white px-1 py-1 rounded-md hover:bg-green-700 transition"
         >
           Resume
         </a>
@@ -148,10 +148,10 @@ const LeftDiv = () => {
           <a href="https://github.com/surajit-tunga" target="_blank" rel="noreferrer">
             <FaGithub className="hover:text-green-300 transition" />
           </a>
-          <a href="#" target="_blank" rel="noreferrer">
+          <a href="https://www.facebook.com/profile.php?id=100092186147999" target="_blank" rel="noreferrer">
             <FaFacebook className="hover:text-green-300 transition" />
           </a>
-          <a href="#" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/surajit.tunga/profilecard/?igsh=MnpqdzhsN3QzazR0" target="_blank" rel="noreferrer">
             <FaInstagram className="hover:text-green-300 transition" />
           </a>
         </div>

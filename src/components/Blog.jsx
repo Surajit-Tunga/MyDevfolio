@@ -62,9 +62,9 @@ const Blog = ({ onDone }) => {
 
   return (
     <div className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Journey Blog</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mt-3 mb-6 text-yellow-400">My Journey Blog</h2>
 
-      <div className="mt-4 space-y-6">
+      <div className="mt-4 space-y-3">
         {displayedEvents.map((event, index) => (
           <div key={index}>
             <h3 className="text-yellow-200 font-bold text-base sm:text-lg">

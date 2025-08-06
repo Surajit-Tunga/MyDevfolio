@@ -49,12 +49,12 @@ const Certificate = ({ onDone }) => {
   }, [currentTypedText]);
 
   return (
-    <div className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-yellow-400 text-left">
+    <div className="mx-3 my-1"> 
+      <h2 className="text-2xl sm:text-3xl font-bold mt-5 mb-5 text-yellow-400 text-left">
         Certificates
       </h2>
 
-      <div className="text-white text-sm sm:text-base leading-relaxed space-y-2">
+      <div className="text-white text-sm sm:text-base leading-relaxed ">
         {/* Render completed certificates */}
         {displayedCertificates.map((cert, idx) => (
           <div key={idx}>
@@ -65,7 +65,7 @@ const Certificate = ({ onDone }) => {
                 rel="noopener noreferrer"
                 className="hover:underline text-white"
               >
-                {cert.typedText}
+                <span className="text-green-600">~$ </span>{cert.typedText}
               </a>
             ) : (
               <p>{cert.typedText}</p>
@@ -75,7 +75,7 @@ const Certificate = ({ onDone }) => {
 
         {/* Currently typing */}
         {currentIndex < certificates.length && (
-          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
+          <div className="whitespace-pre-wrap text-white"><span className="text-green-600">~$ </span>{currentTypedText}</div>
         )}
 
         {/* Scroll anchor */}

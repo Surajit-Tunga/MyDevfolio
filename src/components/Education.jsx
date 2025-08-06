@@ -57,20 +57,20 @@ const Education = ({ onDone }) => {
 
   return (
     <div className="mx-3 my-1">
-      <h2 className="text-xl sm:text-2xl font-bold text-yellow-400 mb-4">
+      <h2 className="text-xl sm:text-2xl font-bold text-yellow-400 mt-3 mb-4">
         Education
       </h2>
 
-      <div className="space-y-5 mb-10">
+      <div className="space-y-3 ">
         {animatedData.map((edu, index) => (
           <div
             key={index}
             className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4"
           >
             <div>
-              <h3 className="text-base sm:text-lg font-semibold text-yellow-400 flex items-center gap-2">
-                {edu.institution}
-              </h3>
+           <h3 className="text-base sm:text-lg font-semibold text-yellow-400 flex items-center gap-2">
+             {edu.institution && <span className="text-green-600">~$</span>} {edu.institution}
+           </h3>
               <p className="text-sm sm:text-base text-yellow-200">{edu.degree}</p>
               <p className="text-sm text-white">{edu.score}</p>
             </div>
@@ -80,7 +80,7 @@ const Education = ({ onDone }) => {
           </div>
         ))}
         {/* Auto-scroll anchor */}
-        <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
+        <span ref={endRef} className="inline-block w-px h-px align-top pb-9" />
       </div>
     </div>
   );

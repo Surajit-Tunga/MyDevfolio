@@ -48,12 +48,12 @@ const Projects = ({ onDone }) => {
 
   return (
     <div className="mx-3 my-1">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400">My Projects</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mt-3 mb-6 text-yellow-400">My Projects</h2>
 
       <div className="text-white text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-wrap">
         {displayedProjects.map((project, index) => (
           <div key={index}>
-            <p className="text-white">{project.typedText.replace('Explore →', '').trim()}</p>
+            <p className="text-white"><span className="text-green-600">~$ </span>{project.typedText.replace('Explore →', '').trim()}</p>
 
             <a
               href={project.link}
@@ -78,7 +78,7 @@ const Projects = ({ onDone }) => {
         ))}
 
         {currentTypedText && (
-          <div className="whitespace-pre-wrap text-white">{currentTypedText}</div>
+          <div className="whitespace-pre-wrap text-white"><span className="text-green-600">~$ </span>{currentTypedText}</div>
         )}
 
         {/* Auto-scroll anchor */}
