@@ -15,7 +15,7 @@ const Blog = ({ onDone }) => {
       `On ${event.date}, I attended ${event.eventName} organized by ${event.organizedBy}.\n` +
       `Here my role was ${event.role}.\n` +
       `Position: ${event.position}\n` +
-      `${event.description}\n\n`
+      `${event.description}\n`
     );
   };
 
@@ -27,13 +27,13 @@ const Blog = ({ onDone }) => {
 
       if (currentTypedTitle.length < fullTitle.length) {
         const timeout = setTimeout(() => {
-          setCurrentTypedTitle((prev) => prev + fullTitle[currentTypedTitle.length]);
+          setCurrentTypedTitle((prev) => prev + fullTitle[prev.length]);
         }, 50);
         return () => clearTimeout(timeout);
       } else if (charIndex < fullBody.length) {
         const timeout = setTimeout(() => {
           setCurrentTypedText((prev) => prev + fullBody[charIndex]);
-          setCharIndex(charIndex + 1);
+          setCharIndex((prev) => prev + 1);
         }, 15);
         return () => clearTimeout(timeout);
       } else {
@@ -43,11 +43,10 @@ const Blog = ({ onDone }) => {
           typedText: currentTypedText,
         };
         setDisplayedEvents((prev) => [...prev, completedEvent]);
-
         setCurrentTypedTitle('');
         setCurrentTypedText('');
         setCharIndex(0);
-        setCurrentEventIndex(currentEventIndex + 1);
+        setCurrentEventIndex((prev) => prev + 1);
       }
     } else {
       if (onDone) onDone();
@@ -58,13 +57,13 @@ const Blog = ({ onDone }) => {
     if (endRef.current) {
       endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-  }, [currentTypedTitle, currentTypedText]);
+  }, [currentTypedTitle, currentTypedText, displayedEvents]);
 
   return (
     <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mt-3 mb-6 text-yellow-400">My Journey Blog</h2>
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-5">
         {displayedEvents.map((event, index) => (
           <div key={index}>
             <h3 className="text-yellow-200 font-bold text-base sm:text-lg">
@@ -73,6 +72,16 @@ const Blog = ({ onDone }) => {
             <pre className="whitespace-pre-wrap text-white text-sm leading-relaxed">
               {event.typedText}
             </pre>
+            {event.link && (
+              <a
+                href={event.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline text-sm"
+              >
+                View More
+              </a>
+            )}
           </div>
         ))}
 

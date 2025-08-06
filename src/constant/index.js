@@ -114,7 +114,7 @@ export const journeyData = [
     position: "Finalist",
     role: "Team Lead & Full Stack Developer",
     description: "Made an image processing project for phone detection in restricted zones.",
-    link: "#"
+    link: "https://www.linkedin.com/posts/surajittunga_smartbangalhackathon-hackathonlife-teamwork-activity-7324762334772580352-T3Nb?utm_source=share&utm_medium=member_android&rcm=ACoAAE0oZ9EBr9Imu8SBp8lM6b7kCw_UimtLq4A "
   },
   {
     eventName: "Technical Paper Presentation",
@@ -132,7 +132,7 @@ export const journeyData = [
     position: "Winner (10th Place)",
     role: "Team Lead & Model Maker",
     description: "Developed a speaking system for mute people using hand gestures.",
-    link: "#"
+    link: "https://www.linkedin.com/posts/surajittunga_ihmmc-innovation-engineeringexcellence-activity-7320808353520074752-FScc?utm_source=share&utm_medium=member_android&rcm=ACoAAE0oZ9EBr9Imu8SBp8lM6b7kCw_UimtLq4A"
   },
 ];
 
