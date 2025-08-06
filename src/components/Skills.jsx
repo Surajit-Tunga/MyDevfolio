@@ -1,35 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-const techStack = [
-  {
-    category: 'Programming Languages',
-    technologies: ['Python', 'Java', 'JavaScript'],
-  },
-  {
-    category: 'Frontend',
-    technologies: ['HTML', 'CSS', 'React', 'Tailwind', 'Vite'],
-  },
-  {
-    category: 'Backend',
-    technologies: ['Node.js', 'Express.js', 'Django'],
-  },
-  {
-    category: 'Database',
-    technologies: ['MongoDB', 'MySQL'],
-  },
-  // {
-  //   category: 'Data Science',
-  //   technologies: ['NumPy', 'Pandas', 'Matplotlib', 'Scikit-learn'],
-  // },
-  {
-    category: 'Tools',
-    technologies: ['Git', 'GitHub'],
-  },
-  // {
-  //   category: 'AI & LLM',
-  //   technologies: ['LangChain', 'LlamaIndex', 'Vector DB', 'RAG'],
-  // },
-];
+import { techStack } from '../constant/index';
 
 const TechStack = ({ onDone }) => {
   const [displayedCategories, setDisplayedCategories] = useState([]);

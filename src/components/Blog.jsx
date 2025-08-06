@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { journeyData } from './constant/index';
+import { journeyData } from '../constant/index';
 
 const Blog = ({ onDone }) => {
   const [currentEventIndex, setCurrentEventIndex] = useState(0);

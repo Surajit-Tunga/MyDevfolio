@@ -32,6 +32,7 @@ export const aboutData = {
   ],
 };
 
+
 export const activitiesData = [
   {
     title: "Full Stack Web Development",
@@ -113,6 +114,7 @@ export const journeyData = [
     position: "Finalist",
     role: "Team Lead & Full Stack Developer",
     description: "Made an image processing project for phone detection in restricted zones.",
+    link: "#"
   },
   {
     eventName: "Technical Paper Presentation",
@@ -121,6 +123,7 @@ export const journeyData = [
     position: "Paper Presenter",
     role: "Team Lead",
     description: "Presented a paper on '5g-Enabled IoT'.",
+    link: "#"
   },
   {
     eventName: "IHMMC 2025",
@@ -129,7 +132,39 @@ export const journeyData = [
     position: "Winner (10th Place)",
     role: "Team Lead & Model Maker",
     description: "Developed a speaking system for mute people using hand gestures.",
+    link: "#"
   },
+];
+
+export const techStack = [
+  {
+    category: 'Programming Languages',
+    technologies: ['Python', 'Java', 'JavaScript'],
+  },
+  {
+    category: 'Frontend',
+    technologies: ['HTML', 'CSS', 'React', 'Tailwind', 'Vite'],
+  },
+  {
+    category: 'Backend',
+    technologies: ['Node.js', 'Express.js', 'Django'],
+  },
+  {
+    category: 'Database',
+    technologies: ['MongoDB', 'MySQL'],
+  },
+  // {
+  //   category: 'Data Science',
+  //   technologies: ['NumPy', 'Pandas', 'Matplotlib', 'Scikit-learn'],
+  // },
+  {
+    category: 'Tools',
+    technologies: ['Git', 'GitHub'],
+  },
+  // {
+  //   category: 'AI & LLM',
+  //   technologies: ['LangChain', 'LlamaIndex', 'Vector DB', 'RAG'],
+  // },
 ];
 
 

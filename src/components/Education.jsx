@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { aboutData } from './constant/index.js';
-import { FaCheckCircle } from 'react-icons/fa';
+import { aboutData } from '../constant/index.js';
 
 const Education = ({ onDone }) => {
   const [animatedData, setAnimatedData] = useState(

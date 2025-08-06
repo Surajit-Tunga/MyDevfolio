@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { activitiesData } from './constant/index.js';
+import { activitiesData } from '../constant/index.js';
 
 const Activities = ({ onDone }) => {
   const [text, setText] = useState('');

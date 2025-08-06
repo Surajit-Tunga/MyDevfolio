@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { projects } from './constant/index';
+import { projects } from '../constant/index';
 
 const Projects = ({ onDone }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

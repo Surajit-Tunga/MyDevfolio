@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { certificates } from './constant/index';
+import { certificates } from '../constant/index';
 
 const Certificate = ({ onDone }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

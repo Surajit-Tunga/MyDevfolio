@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { aboutData } from './constant/index.js';
+import { aboutData } from '../constant/index.js';
 
 const Hobbies = ({ onDone }) => {
   const fullText = `${aboutData.extra.title}: ${aboutData.extra.description}`;
