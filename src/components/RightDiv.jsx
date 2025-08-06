@@ -27,7 +27,7 @@ const RightDiv = () => {
     },
   ]);
   const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false); // NEW
+  const [isTyping, setIsTyping] = useState(false);
   const terminalRef = useRef(null);
 
   const handleCommand = (e) => {
@@ -102,7 +102,7 @@ const RightDiv = () => {
   }, [history]);
 
   return (
-    <div className="bg-black text-green-400 font-mono p-4 sm:p-1 rounded-xl h-full overflow-y-auto border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
+    <div className="bg-black text-green-400 font-mono p-4 sm:p-2 rounded-xl h-full overflow-y-auto overflow-x-hidden border-2 border-green-600 shadow-[0_0_10px_#22c55e] scroll-hidden">
       <div ref={terminalRef} className="space-y-4">
         {history.map((item, idx) => (
           <div key={idx}>
@@ -110,13 +110,18 @@ const RightDiv = () => {
               <span className="text-green-500">visitor@portfolio</span>:~$ {item.command}
             </div>
             {item.output && (
-              <pre className="ml-4 whitespace-pre-wrap">{item.output}</pre>
+              <pre
+                className={`ml-4 whitespace-pre-wrap ${
+                  item.output.startsWith("'") ? 'text-red-500' : ''
+                }`}
+              >
+                {item.output}
+              </pre>
             )}
             {item.component && <div className="mt-2">{item.component}</div>}
           </div>
         ))}
 
-        {/* Input Prompt - only when not typing */}
         {!isTyping && (
           <form onSubmit={handleCommand} className="flex items-center space-x-2">
             <span className="text-green-500">visitor@portfolio</span>:~$
