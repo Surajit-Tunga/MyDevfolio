@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FaGithub,
   FaLinkedin,
@@ -10,10 +10,30 @@ import {
 import pp from '../assets/pp.jpg';
 
 const LeftDiv = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const texts = ['Full Stack Developer', 'Exploring GenAI & ML'];
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (charIndex < texts[currentTextIndex].length) {
+        setDisplayedText((prev) => prev + texts[currentTextIndex][charIndex]);
+        setCharIndex((prev) => prev + 1);
+      } else {
+        setTimeout(() => {
+          setCharIndex(0);
+          setDisplayedText('');
+          setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+        }, 1500); // Delay before switching
+      }
+    }, 100); // Typing speed
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, currentTextIndex]);
 
   return (
-    <div className="bg-black text-green-400 border-2 border-green-600 rounded-2xl p-4 h-full shadow-[0_0_10px_#22c55e] overflow-hidden transition-all duration-300">
+    <div className="bg-black font-mono text-green-400 border-2 border-green-600 rounded-2xl p-4 h-full shadow-[0_0_10px_#22c55e] overflow-hidden transition-all duration-300">
       {/* === LARGE SCREENS === */}
       <div className="hidden lg:flex flex-col items-center space-y-3 justify-center h-full">
         <img
@@ -24,8 +44,9 @@ const LeftDiv = () => {
         <h1 className="text-2xl font-semibold text-white tracking-wide">
           Surajit Tunga
         </h1>
-        <p className="text-sm text-yellow-400 text-center">
-          Full Stack Developer · Exploring GenAI & ML
+        <p className="text-sm text-yellow-400 text-center h-5 whitespace-nowrap">
+          {displayedText}
+          <span className="animate-pulse">|</span>
         </p>
         <a
           href="/resume.pdf"
@@ -92,14 +113,17 @@ const LeftDiv = () => {
           />
           <div>
             <h1 className="text-base font-semibold text-white">Surajit Tunga</h1>
-            <p className="text-xs text-green-300">Full Stack Developer</p>
+            <p className="text-xs text-yellow-400 h-4 whitespace-nowrap">
+              {displayedText}
+              <span className="animate-pulse">|</span>
+            </p>
           </div>
         </div>
         <a
           href="/Surajit_Tunga_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition"
+          className="text-xs bg-green-600 text-white px-1 py-1 rounded-md hover:bg-green-700 transition"
         >
           Resume
         </a>
