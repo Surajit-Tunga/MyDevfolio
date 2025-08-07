@@ -6,7 +6,7 @@ const Projects = ({ onDone }) => {
   const [charIndex, setCharIndex] = useState(0);
   const [currentTypedText, setCurrentTypedText] = useState('');
   const [displayedProjects, setDisplayedProjects] = useState([]);
-  const endRef = useRef(null); // For smooth scroll
+  const endRef = useRef(null); 
 
   const formatProject = (project) => {
     return `${project.name}\n${project.description}\n\nExplore →\n`;
@@ -67,7 +67,7 @@ const Projects = ({ onDone }) => {
               🔗 Explore
             </a>
 
-            <div className="flex gap-2 mt-2">
+            {/* <div className="flex gap-2 mt-2">
               {project.techStack.map((icon, i) => (
                 <img
                   key={i}
@@ -76,7 +76,7 @@ const Projects = ({ onDone }) => {
                   className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         ))}
 
@@ -88,7 +88,6 @@ const Projects = ({ onDone }) => {
           </div>
         )}
 
-        {/* Auto-scroll anchor */}
         <span ref={endRef} className="inline-block w-px h-px align-top pb-10" />
       </div>
     </div>

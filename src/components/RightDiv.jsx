@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import About from './About';
 import Education from './Education';
-import Activities from './Activities';
 import Hobbies from './Hobbies';
 import Skills from './Skills';
 import Certificate from './Certificate';
@@ -16,7 +15,6 @@ const RightDiv = () => {
         'Available commands:\n' +
         '  - about\n' +
         '  - education\n' +
-        '  - activities\n' +
         '  - hobbies\n' +
         '  - certificates\n' +
         '  - skills\n' +
@@ -43,7 +41,6 @@ const RightDiv = () => {
           'Available commands:\n' +
           '  - about\n' +
           '  - education\n' +
-          '  - activities\n' +
           '  - hobbies\n' +
           '  - certificates\n' +
           '  - skills\n' +
@@ -58,10 +55,6 @@ const RightDiv = () => {
       case 'education':
         setIsTyping(true);
         component = <Education onDone={() => setIsTyping(false)} />;
-        break;
-      case 'activities':
-        setIsTyping(true);
-        component = <Activities onDone={() => setIsTyping(false)} />;
         break;
       case 'hobbies':
         setIsTyping(true);
