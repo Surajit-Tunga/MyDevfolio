@@ -87,7 +87,7 @@ const Blog = ({ onDone }) => {
 
         {currentEventIndex < journeyData.length && (
           <div>
-            <h3 className="text-yellow-100 font-bold text-base sm:text-lg">
+            <h3 className="text-yellow-200 font-bold text-base sm:text-lg">
               <span className="text-green-600">~$ </span>
               {currentTypedTitle}
               {currentTypedTitle.length < journeyData[currentEventIndex].eventName.length && (

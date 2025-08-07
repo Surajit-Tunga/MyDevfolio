@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { aboutData } from '../constant/index.js';
 
 const Hobbies = ({ onDone }) => {
-  const fullText = `${aboutData.extra.title}: ${aboutData.extra.description}`;
+  const title = aboutData.extra.title;
+  const description = aboutData.extra.description;
+  const fullText = `${title}: ${description}`;
   const playTextFull = 'Wanna Play?';
 
   const [typedText, setTypedText] = useState('');
@@ -13,7 +15,6 @@ const Hobbies = ({ onDone }) => {
 
   const endRef = useRef(null);
 
-  // Typing main hobby line
   useEffect(() => {
     if (index < fullText.length) {
       const timeout = setTimeout(() => {
@@ -24,7 +25,6 @@ const Hobbies = ({ onDone }) => {
     }
   }, [index, fullText]);
 
-  // Typing "Wanna Play?" only after main text is done
   useEffect(() => {
     if (index >= fullText.length && playIndex < playTextFull.length) {
       const timeout = setTimeout(() => {
@@ -43,17 +43,22 @@ const Hobbies = ({ onDone }) => {
     }
   }, [typedText, playText]);
 
+  // Determine dynamic split point
+  const colonIndex = typedText.indexOf(':');
+  const typedTitle = colonIndex !== -1 ? typedText.slice(0, colonIndex) : typedText;
+  const typedDesc = colonIndex !== -1 ? typedText.slice(colonIndex) : '';
+
   return (
     <div className="mx-3 my-1">
       <h2 className="text-2xl sm:text-3xl font-bold mt-3 mb-4 text-yellow-400">Hobbies</h2>
 
       <p className="text-base text-white sm:text-lg leading-relaxed whitespace-pre-wrap font-mono">
         <span className="text-green-600">~$ </span>
-        <span>{typedText}</span>
+        <span className="text-yellow-200">{typedTitle}</span>
+        <span>{typedDesc}</span>
         {index < fullText.length && <span className="animate-pulse">|</span>}
       </p>
 
-      {/* Wanna Play animation */}
       <div className="mt-1">
         <a
           href={aboutData.extra.profile}
@@ -68,7 +73,7 @@ const Hobbies = ({ onDone }) => {
         </a>
       </div>
 
-      <div ref={endRef} className="inline-block w-px h-px align-top pb-10"  />
+      <div ref={endRef} className="inline-block w-px h-px align-top pb-10" />
     </div>
   );
 };
