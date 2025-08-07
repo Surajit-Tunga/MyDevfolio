@@ -18,7 +18,7 @@ const RightDiv = () => {
         '  - education\n' +
         '  - activities\n' +
         '  - hobbies\n' +
-        '  - certificate\n' +
+        '  - certificates\n' +
         '  - skills\n' +
         '  - projects\n' +
         '  - blog\n' +
@@ -45,7 +45,7 @@ const RightDiv = () => {
           '  - education\n' +
           '  - activities\n' +
           '  - hobbies\n' +
-          '  - certificate\n' +
+          '  - certificates\n' +
           '  - skills\n' +
           '  - projects\n' +
           '  - blog\n' +
@@ -67,7 +67,7 @@ const RightDiv = () => {
         setIsTyping(true);
         component = <Hobbies onDone={() => setIsTyping(false)} />;
         break;
-      case 'certificate':
+      case 'certificates':
         setIsTyping(true);
         component = <Certificate onDone={() => setIsTyping(false)} />;
         break;

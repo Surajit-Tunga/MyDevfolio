@@ -53,7 +53,7 @@ const Activities = ({ onDone }) => {
             );
           } else if (line.type === 'desc') {
             return (
-              <p key={idx} className="text-white pl-5">
+              <p key={idx} className="text-white pl-2">
                 {line.text}
               </p>
             );
